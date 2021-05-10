@@ -24,7 +24,6 @@ class CreatePublicationsTable extends Migration
             $table->integer('bathrooms')->unsigned();
             $table->string('address', 255);
             $table->decimal('price', 10, 2)->nullable();
-
             $table->timestamps();
         });
     }
