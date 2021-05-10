@@ -19,11 +19,11 @@ class CreatePublicationsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
             $table->string('title', 100);
-            $table->string('description', 500);
+            $table->string('description', 500)->nullable();
             $table->integer('rooms')->unsigned();
             $table->integer('bathrooms')->unsigned();
             $table->string('address', 255);
-            $table->decimal('price', 10, 2);
+            $table->decimal('price', 10, 2)->nullable();
 
             $table->timestamps();
         });
