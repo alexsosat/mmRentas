@@ -29,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = '';
 
     /**
      * Create a new controller instance.
@@ -51,8 +51,11 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
+            'surname' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'phone' => ['string', 'max:10'],
+            'password' => ['required', 'string', 'min:8', 'confirmed',],
+            'user_image' => ['mimes:jpg,png|max:3000'],
         ]);
     }
 
@@ -64,10 +67,25 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $url = null;
+        if (array_key_exists('user_image', $data)) {
+            //Getting image data
+            $extension = $data['user_image']->extension();
+            $filenametostore = time() . '.' . $extension;
+
+
+            //Storing image
+            $data['user_image']->storeAs('/public/img/users', $filenametostore, 'do');
+            $url = 'public/img/users/' . $filenametostore;
+        }
+
         return User::create([
             'name' => $data['name'],
+            'surname' => $data['surname'],
             'email' => $data['email'],
+            'phone' => $data['phone'],
             'password' => Hash::make($data['password']),
+            'user_image' => $url,
         ]);
     }
 }
