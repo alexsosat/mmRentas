@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Cloudinary;
 
 class RegisterController extends Controller
 {
@@ -53,7 +54,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'surname' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'phone' => ['string', 'max:10'],
+            'phone' => ['string', 'min:10', 'max:10', 'nullable'],
             'password' => ['required', 'string', 'min:8', 'confirmed',],
             'user_image' => ['mimes:jpg,png|max:3000'],
         ]);
@@ -69,14 +70,10 @@ class RegisterController extends Controller
     {
         $url = null;
         if (array_key_exists('user_image', $data)) {
-            //Getting image data
-            $extension = $data['user_image']->extension();
-            $filenametostore = time() . '.' . $extension;
 
-
-            //Storing image
-            $data['user_image']->storeAs('/public/img/users', $filenametostore, 'do');
-            $url = 'public/img/users/' . $filenametostore;
+            //Cloudinary
+            $response = Cloudinary::upload($data['user_image']->getRealPath())->getSecurePath();
+            $url = $response;
         }
 
         return User::create([
