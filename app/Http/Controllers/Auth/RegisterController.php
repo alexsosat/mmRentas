@@ -8,7 +8,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Cloudinary;
+use App\Http\Controllers\ImageController;
 
 class RegisterController extends Controller
 {
@@ -68,12 +68,10 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+
         $url = null;
         if (array_key_exists('user_image', $data)) {
-
-            //Cloudinary
-            $response = Cloudinary::upload($data['user_image']->getRealPath())->getSecurePath();
-            $url = $response;
+            $url = app(ImageController::class)->store($data['user_image']);
         }
 
         return User::create([
