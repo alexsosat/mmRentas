@@ -36,15 +36,13 @@ class ImageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function showUserImage($id)
+    public function showUserImage(User $User)
     {
-        $User = User::select('user_image')->find($id);
         if ($User === null) {
             abort(404);
         }
 
         $file = file_get_contents(public_path('img/defaults/user.png'));
-        $type = 'image/png';
 
         if ($User->user_image !== null) {
 
@@ -52,7 +50,7 @@ class ImageController extends Controller
         }
 
         $response = Response::make($file, 200);
-        $response->header("Content-Type", $type);
+        $response->header("Content-Type", 'image/png');
 
         return $response;
     }

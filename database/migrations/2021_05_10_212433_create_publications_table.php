@@ -20,10 +20,11 @@ class CreatePublicationsTable extends Migration
 
             $table->string('title', 100);
             $table->string('description', 500)->nullable();
-            $table->integer('rooms')->unsigned();
-            $table->integer('bathrooms')->unsigned();
+            $table->unsignedTinyInteger('rooms');
+            $table->unsignedTinyInteger('bathrooms');
             $table->string('address', 255);
             $table->decimal('price', 10, 2)->nullable();
+            $table->boolean('isActive')->default(true);
             $table->timestamps();
         });
     }

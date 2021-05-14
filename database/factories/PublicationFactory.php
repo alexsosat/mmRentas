@@ -22,13 +22,14 @@ class PublicationFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => 1,
+            'user_id' => rand(1, 5),
             'title' => $this->faker->sentence(),
             'description' => $this->faker->text(255),
             'rooms' => rand(0, 8),
             'bathrooms' => rand(0, 4),
             'address' => $this->faker->address,
-            'price' => $this->faker->numberBetween($min = 1500, $max = 4000)
+            'price' => $this->faker->numberBetween($min = 1500, $max = 4000),
+            'isActive' => rand(0, 1)
 
         ];
     }

@@ -17,7 +17,7 @@ class CreateImagesTable extends Migration
             $table->id();
             $table->bigInteger('publication_id')->unsigned();
             $table->foreign('publication_id')->references('id')->on('publications')->onDelete('cascade');
-            $table->string('image_url', 80);
+            $table->string('image_url', 150);
             $table->timestamps();
         });
     }

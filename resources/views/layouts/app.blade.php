@@ -64,7 +64,7 @@
                                         aria-expanded="false" data-toggle="dropdown" type="button">
                                         <div class="d-flex align-items-center">
                                             <div class="rounded-circle nav-circle-image"
-                                                style="background: url(/users/profile_images/{{ Auth::user()->id }}) center / cover no-repeat;">
+                                                style="background: url(/user/{{ Auth::user()->id }}/profile_image) center / cover no-repeat;">
                                             </div>
                                             <span class="font-weight-bold">{{ Auth::user()->name }}</span>
                                             <i class="fas fa-sort-down ml-2"></i>

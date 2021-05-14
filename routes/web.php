@@ -17,7 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/users/profile_images/{id}', [App\Http\Controllers\ImageController::class, 'showUserImage']);
+Route::get('/user/{user:id}/profile_image', [App\Http\Controllers\ImageController::class, 'showUserImage']);
 
 Auth::routes();
 
