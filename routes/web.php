@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,12 +14,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Auth::routes();
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/user/{user:id}/profile_image', [App\Http\Controllers\ImageController::class, 'showUserImage']);
 
-Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::group(['prefix' => 'user/{user:id}', 'as' => 'user.', 'namespace' => 'App\Http\Controllers'], function () {
+
+    Route::get('/info', ['as' => 'info', 'uses' => 'UserController@show']);
+    Route::get('/profile_image', ['as' => 'profile_image', 'uses' => 'ImageController@showUserImage']);
+
+    Route::patch('/info/update', ['as' => 'info.update', 'uses' => 'UserController@updateInfo']);
+    Route::patch('/password/update', ['as' => 'password.update', 'uses' => 'UserController@updatePassword']);
+
+    Route::delete('/delete', ['as' => 'destroy', 'uses' => 'UserController@destroy']);
+});

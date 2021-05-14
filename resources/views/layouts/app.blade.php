@@ -64,14 +64,14 @@
                                         aria-expanded="false" data-toggle="dropdown" type="button">
                                         <div class="d-flex align-items-center">
                                             <div class="rounded-circle nav-circle-image"
-                                                style="background: url(/user/{{ Auth::user()->id }}/profile_image) center / cover no-repeat;">
+                                                style="background: url({{ route('user.profile_image', Auth::user()->id) }}) center / cover no-repeat;">
                                             </div>
                                             <span class="font-weight-bold">{{ Auth::user()->name }}</span>
                                             <i class="fas fa-sort-down ml-2"></i>
                                         </div>
                                     </button>
                                     <div class="dropdown-menu dropdown-type">
-                                        <a class="dropdown-item" href="#">
+                                        <a class="dropdown-item" href="{{ route('user.info', Auth::user()->id) }}">
                                             {{ __('info') }}
                                         </a>
 
