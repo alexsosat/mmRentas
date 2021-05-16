@@ -69,9 +69,9 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
 
-        $url = null;
+        $image_url = null;
         if (array_key_exists('user_image', $data)) {
-            $url = app(ImageController::class)->store($data['user_image']);
+            $image_url = app(ImageController::class)->store($data['user_image']);
         }
 
         return User::create([
@@ -80,7 +80,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'phone' => $data['phone'],
             'password' => Hash::make($data['password']),
-            'user_image' => $url,
+            'image_url' => $image_url,
         ]);
     }
 }

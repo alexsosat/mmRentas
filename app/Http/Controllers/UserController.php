@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Http\Controllers\ImageController;
 
 class UserController extends Controller
 {
@@ -37,9 +38,41 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function updateInfo(Request $request, $id)
+    public function updateInfo(Request $request, User $User)
     {
-        //
+
+        //validating the email if changed
+        if ($request->email !== $User->email) {
+            $request->validate([
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            ]);
+        }
+
+        //validating the data
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'surname' => ['required', 'string', 'max:255'],
+            'user_image' => 'mimes:jpg,png|max:3000',
+        ]);
+
+        //updating the image if new file is sent
+        if ($request->user_image !== null) {
+
+            if ($User->user_image !== null) {
+                //Deleting previous image
+                app(ImageController::class)->destroy($User->user_image);
+            }
+
+            $User->user_image = app(ImageController::class)->store($request->user_image);
+        }
+
+        //updating the user data
+        $User->name = $request->name;
+        $User->surname = $request->surname;
+        $User->email = $request->email;
+
+        $User->update();
+        return redirect('/');
     }
 
     /**

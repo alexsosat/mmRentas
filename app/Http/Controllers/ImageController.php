@@ -23,7 +23,7 @@ class ImageController extends Controller
     {
         //Cloudinary
         return Cloudinary::upload($file->getRealPath(), [
-            'folder' => 'uploads',
+            'folder' => 'mmRentas/users',
             'transformation' => [
                 'quality' => 'auto',
                 'fetch_format' => 'auto'
@@ -44,9 +44,8 @@ class ImageController extends Controller
 
         $file = file_get_contents(public_path('img/defaults/user.png'));
 
-        if ($User->user_image !== null) {
-
-            $file = file_get_contents($User->user_image);
+        if ($User->image_url !== null) {
+            $file = file_get_contents($User->image_url);
         }
 
         $response = Response::make($file, 200);
@@ -75,7 +74,7 @@ class ImageController extends Controller
      * @param  \App\Models\Image  $image
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Image $image)
+    public function destroy($image)
     {
         //
     }
