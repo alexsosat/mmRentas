@@ -58,12 +58,12 @@ class UserController extends Controller
         //updating the image if new file is sent
         if ($request->user_image !== null) {
 
-            if ($User->user_image !== null) {
+            if ($User->image_url !== null) {
                 //Deleting previous image
-                app(ImageController::class)->destroy($User->user_image);
+                app(ImageController::class)->destroy($User->image_url);
             }
 
-            $User->user_image = app(ImageController::class)->store($request->user_image);
+            $User->image_url = app(ImageController::class)->store($request->user_image);
         }
 
         //updating the user data
@@ -72,7 +72,7 @@ class UserController extends Controller
         $User->email = $request->email;
 
         $User->update();
-        return redirect('/');
+        return back();
     }
 
     /**

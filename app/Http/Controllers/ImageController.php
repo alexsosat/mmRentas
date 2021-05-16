@@ -13,23 +13,12 @@ use Cloudinary;
 class ImageController extends Controller
 {
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(UploadedFile $file)
+    public function retrievePublicId($url)
     {
-        //Cloudinary
-        return Cloudinary::upload($file->getRealPath(), [
-            'folder' => 'mmRentas/users',
-            'transformation' => [
-                'quality' => 'auto',
-                'fetch_format' => 'auto'
-            ]
-        ])->getSecurePath();
+        preg_match("/upload\/(?:v\d+\/)?([^\.]+)/", $url, $matches);
+        return $matches[1];
     }
+
 
     /**
      * Show the user profile picture
@@ -55,18 +44,25 @@ class ImageController extends Controller
     }
 
 
-
     /**
-     * Update the specified resource in storage.
+     * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Image  $image
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Image $image)
+    public function store(UploadedFile $file)
     {
-        //
+        //Cloudinary
+        return Cloudinary::upload($file->getRealPath(), [
+            'folder' => 'mmRentas/users',
+            'transformation' => [
+                'quality' => 'auto',
+                'fetch_format' => 'auto'
+            ]
+        ])->getSecurePath();
     }
+
+
 
     /**
      * Remove the specified resource from storage.
@@ -74,8 +70,9 @@ class ImageController extends Controller
      * @param  \App\Models\Image  $image
      * @return \Illuminate\Http\Response
      */
-    public function destroy($image)
+    public function destroy($url)
     {
-        //
+        $public_id = $this->retrievePublicId($url);
+        Cloudinary::destroy($public_id);
     }
 }
