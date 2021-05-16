@@ -3,31 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-md-4">
-                <div class="d-flex flex-column align-items-center">
-                    <div class="rounded-circle big-user-circle mb-3"
-                        style="background: url({{ route('user.profile_image', $User->id) }}) center / cover no-repeat;">
-                    </div>
-                    <h2>{{ $User->name . ' ' . $User->surname }}</h2>
-                    <div class="horizontal-separator w-100"></div>
-                </div>
-                <div class="mb-4">
-                    <a class="user-link" href="{{ route('user.info', $User->id) }}">
-                        <p>Información&nbsp;</p>
-                    </a>
-                    <a class="user-link" href="#">
-                        <p>Publicaciones&nbsp;</p>
-                    </a>
-                </div>
-                <a class="d-flex justify-content-between text-blue user-logout align-items-center"
-                    onclick='event.preventDefault();document.getElementById("logout-form").submit();'
-                    href="{{ route('logout') }}">
-                    <form id=" logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                        @csrf
-                    </form>
-                    <span class="cerrar">Cerrar Sesión&nbsp;</span><i class="fas fa-sign-out-alt"></i>
-                </a>
-            </div>
+            <x-user-dashboard user="{{ $User->id }}"> </x-user-dashboard>
             <div class="col col-md-8">
                 <div class="user-info-pane">
                     <div class="mb-3">
@@ -71,6 +47,9 @@
                             </div>
                             <div class="form-group">
                                 <label class="mr-3" for="user_image">Imagen de perfil:</label>
+                                <div class="user-img-thumb mb-3"
+                                    style="background: url({{ route('user.profile_image', $User->id) }}) center / cover no-repeat;">
+                                </div>
                                 <input class="form-control-file" type="file" name="user_image">
                             </div>
                             <div class="d-flex justify-content-end">

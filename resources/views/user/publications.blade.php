@@ -3,31 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-md-4 mb-5">
-                <div class="d-flex flex-column align-items-center">
-                    <div class="rounded-circle big-user-circle mb-3"
-                        style="background: url(/users/profile_images/{{ $User->id }}) center / cover no-repeat;">
-                    </div>
-                    <h2>{{ $User->name . ' ' . $User->surname }}</h2>
-                    <div class="horizontal-separator w-100"></div>
-                </div>
-                <div class="mb-4">
-                    <a class="user-link" href="{{ route('users.show', $User->id) }}">
-                        <p>Información&nbsp;</p>
-                    </a>
-                    <a class="user-link" href="{{ route('users.publications', $User->id) }}">
-                        <p>Publicaciones&nbsp;</p>
-                    </a>
-                </div>
-                <a class="d-flex justify-content-between text-blue user-logout align-items-center"
-                    onclick='event.preventDefault();document.getElementById("logout-form").submit();'
-                    href="{{ route('logout') }}">
-                    <form id=" logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                        @csrf
-                    </form>
-                    <span class="cerrar">Cerrar Sesión&nbsp;</span><i class="fas fa-sign-out-alt"></i>
-                </a>
-            </div>
+            <x-user-dashboard user="{{ $User->id }}"> </x-user-dashboard>
             <div class="col col-md-8">
                 <div class="user-pub-pane">
                     <div class="mb-3">
