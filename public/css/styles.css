@@ -283,6 +283,7 @@ a:hover {
     border: 3px solid #1c3988;
     padding: 30px;
     border-radius: 20px;
+    min-height: 70vh;
 }
 
 .btn-ver {
@@ -403,4 +404,8 @@ a:hover {
 .user-img-thumb {
     height: 5rem;
     width: 5rem;
+}
+
+.empty-pubs {
+    height: 50vh;
 }

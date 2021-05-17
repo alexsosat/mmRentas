@@ -23,6 +23,16 @@ class UserController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showPublications(User $User)
+    {
+        return View('user.publications', compact('User'));
+    }
+
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
