@@ -5,6 +5,13 @@
         <div class="row">
             <x-user-dashboard user="{{ $User->id }}"> </x-user-dashboard>
             <div class="col col-md-8">
+                @if (\Session::has('success'))
+                    <div class="alert alert-success">
+
+                        {!! \Session::get('success') !!}
+
+                    </div>
+                @endif
                 <div class="user-info-pane">
                     <div class="mb-3">
                         <h2 class="text-grey">Información General</h2>
@@ -61,9 +68,21 @@
                     <div class="mb-5">
                         <h2 class="text-grey">Seguridad</h2>
                         <div class="horizontal-separator w-100"></div>
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+
+                                {{ $errors->first() }}
+
+                            </div>
+                        @endif
                         <form method="post" action="{{ route('user.password.update', $User->id) }}">
                             @csrf
                             @method('patch')
+                            <div class="form-group">
+                                <label for="old_password">Antigua contraseña</label>
+                                <input class="form-control form-control @error('old_password') is-invalid @enderror"
+                                    type="password" name="old_password" required autocomplete="old_password">
+                            </div>
                             <div class="form-group">
                                 <label for="password">Nueva contraseña</label>
                                 <input class="form-control form-control @error('password') is-invalid @enderror"

@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Http\Controllers\ImageController;
+
 
 class UserController extends Controller
 {
@@ -72,7 +74,7 @@ class UserController extends Controller
         $User->email = $request->email;
 
         $User->update();
-        return back();
+        return back()->with('success', 'Datos actualizados exitosamente');
     }
 
     /**
@@ -82,9 +84,27 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function updatePassword(Request $request, $id)
+    public function updatePassword(Request $request, User $User)
     {
-        //
+        if (!Hash::check($request->old_password, $User->password)) {
+            return back()->withErrors(['La contraseña no coincidie con tu antigua contraseña', 'old_password']);
+        }
+
+        if (Hash::check($request->password, $User->password)) {
+            return back()->withErrors(['La contraseña antigua es la misma que la nueva', 'same_password']);
+        }
+
+        //validating the password
+        $request->validate([
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+
+        //updating the user
+        $User->password = Hash::make($request->password);
+        $User->update();
+
+
+        return back()->with('success', 'Datos actualizados exitosamente');
     }
 
     /**
@@ -93,8 +113,24 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $User)
     {
-        //
+        if ($User->image_url !== null) {
+            app(ImageController::class)->destroy($User->image_url);
+        }
+
+        //Finding the publications to delete the visual archive and images in local storage
+        $Publications = Publication::where('user_id', '=', $User->id)->get();
+        foreach ($Publications as $Publication) {
+            //deleting the publication images
+            $Images = Image::all()->where('pub_id', '=', $Publication->id);
+            foreach ($Images as $Image) {
+                app(ImageController::class)->destroy($Image->image_file);
+                Image::destroy($Image->id);
+            }
+        }
+
+        User::destroy($User->id);
+        return redirect('/');
     }
 }
