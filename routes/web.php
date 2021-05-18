@@ -21,14 +21,12 @@ Route::get('/', function () {
 });
 
 
-
 Route::group(['prefix' => 'user/{user:id}', 'as' => 'user.', 'namespace' => 'App\Http\Controllers'], function () {
 
     Route::get('/profile_image', ['as' => 'profile_image', 'uses' => 'ImageController@showUserImage']);
     Route::get('/info', ['as' => 'info', 'uses' => 'UserController@show']);
-
     Route::get('/publications', ['as' => 'publications', 'uses' => 'UserController@showPublications']);
-    Route::get('/publications/create', ['as' => 'publication.create', 'uses' => 'PublicationController@create']);
+    Route::get('/publication/create', ['as' => 'publication.create', 'uses' => 'PublicationController@create']);
 
     Route::patch('/info/update', ['as' => 'info.update', 'uses' => 'UserController@updateInfo']);
     Route::patch('/password/update', ['as' => 'password.update', 'uses' => 'UserController@updatePassword']);
@@ -36,5 +34,11 @@ Route::group(['prefix' => 'user/{user:id}', 'as' => 'user.', 'namespace' => 'App
     Route::delete('/delete', ['as' => 'destroy', 'uses' => 'UserController@destroy']);
 });
 
-Route::group(['prefix' => 'publication/{publication:id}', 'as' => 'user.', 'namespace' => 'App\Http\Controllers'], function () {
+Route::group(['prefix' => 'publication/{publication:id}', 'as' => 'publication.', 'namespace' => 'App\Http\Controllers'], function () {
+
+    Route::get('/details', ['as' => 'details', 'uses' => 'PublicationController@show']);
+
+    Route::patch('/edit', ['as' => 'edit', 'uses' => 'PublicationController@edit']);
+
+    Route::delete('/delete', ['as' => 'delete', 'uses' => 'PublicationController@destroy']);
 });

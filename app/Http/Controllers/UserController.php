@@ -29,7 +29,10 @@ class UserController extends Controller
      */
     public function showPublications(User $User)
     {
-        return View('user.publications', compact('User'));
+        return View('user.publications', [
+            'User' => $User,
+            'Publications' => $User->publications()->paginate(4)
+        ]);
     }
 
     /**

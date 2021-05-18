@@ -13,6 +13,8 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet"
+        href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <script src="{{ asset('js/dropdowns.js') }}"></script>
 
 
@@ -75,7 +77,8 @@
                                             {{ __('info') }}
                                         </a>
 
-                                        <a class="dropdown-item" href="#">
+                                        <a class="dropdown-item"
+                                            href="{{ route('user.publications', Auth::user()->id) }}">
                                             {{ __('Publicaciones') }}
                                         </a>
 
