@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Image;
 use App\Models\User;
+use App\Models\Publication;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Http\UploadedFile;
@@ -35,6 +36,32 @@ class ImageController extends Controller
 
         if ($User->image_url !== null) {
             $file = file_get_contents($User->image_url);
+        }
+
+        $response = Response::make($file, 200);
+        $response->header("Content-Type", 'image/png');
+
+        return $response;
+    }
+
+    /**
+     * Show the user profile picture
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showPublicationThumbnail(Publication $Publication)
+    {
+        if ($Publication === null) {
+            abort(404);
+        }
+
+        $file = file_get_contents(public_path('img/defaults/publication.png'));
+
+        $thumbnail_url = $Publication->images()->first();
+
+
+        if ($thumbnail_url !== null) {
+            $file = file_get_contents($thumbnail_url->image_url);
         }
 
         $response = Response::make($file, 200);

@@ -1,4 +1,4 @@
-<div class="col-md-4 mb-5 mb-md-0">
+<div class="col-12 col-lg-4 mb-5 mb-lg-0">
     <div class="d-flex flex-column align-items-center">
         <div class="rounded-circle big-user-circle mb-3"
             style="background: url({{ route('user.profile_image', $User->id) }}) center / cover no-repeat;">

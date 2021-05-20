@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <x-user-dashboard user="{{ $User->id }}"> </x-user-dashboard>
-            <div class="col col-md-8">
+            <div class="col col-12 col-lg-8">
                 <div class="user-pub-pane mb-4">
                     <div class="mb-3">
                         <h2 class="text-grey">Tus publicaciones</h2>

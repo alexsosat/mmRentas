@@ -37,6 +37,7 @@ Route::group(['prefix' => 'user/{user:id}', 'as' => 'user.', 'namespace' => 'App
 Route::group(['prefix' => 'publication/{publication:id}', 'as' => 'publication.', 'namespace' => 'App\Http\Controllers'], function () {
 
     Route::get('/details', ['as' => 'details', 'uses' => 'PublicationController@show']);
+    Route::get('/thumbnail', ['as' => 'profile_image', 'uses' => 'ImageController@showPublicationThumbnail']);
 
     Route::patch('/edit', ['as' => 'edit', 'uses' => 'PublicationController@edit']);
 

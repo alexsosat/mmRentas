@@ -1,30 +1,30 @@
  <div class="result-card-item text-left d-sm-flex mb-4">
      <div class="result-img"
-         style="background: url(/publications/images/{{ $Publication->id }}) center / cover no-repeat;">
+         style="background: url(/publication/{{ $Publication->id }}/thumbnail) center / cover no-repeat;">
      </div>
      <div class="result-card-content d-flex flex-column">
-         <div class="d-sm-flex">
-             <div class="mb-3 mb-sm-0">
+         <div class="d-md-flex">
+             <div class="mb-3 mb-md-0">
                  <p class="result-item-title">{{ $Publication->title }}</p>
                  <div class="d-flex">
-                     <div class="result-card-item-filter">
-                         <i class="las la-bed"></i>
-                         <span>3D</span>
+                     <div class="d-flex justify-content-center  result-card-item-filter">
+                         <i class="las la-bed icon"></i>
+                         <span>{{ $Publication->rooms }}</span>
                      </div>
-                     <div class="result-card-item-filter">
-                         <i class="las la-toilet"></i>
-                         <span>Obj</span>
+                     <div class="d-flex justify-content-center result-card-item-filter">
+                         <i class="las la-toilet icon"></i>
+                         <span>{{ $Publication->bathrooms }}</span>
                      </div>
                  </div>
              </div>
-             <div class="vertical-separator d-sm-block"></div>
+             <div class="vertical-separator d-none d-md-block"></div>
              <div>
                  <p class="result-card-pago-title">Pago Aproximado</p>
-                 <p class="result-card-item-cost">$1300</p>
+                 <p class="result-card-item-cost">${{ $Publication->price }}</p>
              </div>
          </div>
          <div>
-             <p class="limited-text">{{ $Publication->desc }}<br>
+             <p class="limited-text">{{ $Publication->description }}<br>
              </p>
          </div>
          <div class="horizontal-separator"></div>
