@@ -51,6 +51,7 @@ class ImageController extends Controller
      */
     public function showPublicationThumbnail(Publication $Publication)
     {
+
         if ($Publication === null) {
             abort(404);
         }

@@ -11,8 +11,7 @@
                         <div class="horizontal-separator w-100"></div>
                     </div>
                     <div class="d-flex justify-content-end mb-3">
-                        <a class="btn btn-primary add-button" role="button"
-                            href="{{ route('user.publication.create', $User->id) }}">
+                        <a class="btn btn-primary add-button" role="button" href="{{ route('publication.create') }}">
                             <i class="fas fa-plus mr-1"></i> Añadir publicación
                         </a>
                     </div>
