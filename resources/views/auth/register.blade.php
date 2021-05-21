@@ -26,7 +26,7 @@
                         <div class="form-group">
                             <label class="font-weight-bold" for="name">Nombre(s)<br></label>
                             <input class="form-control rounded-lg @error('name') is-invalid @enderror" type="text"
-                                name="name" id="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                name="name" id="name" value="{{ old('name') }}" required autofocus>
                             @error('name')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -36,11 +36,11 @@
                         <div class="form-group">
                             <label class="font-weight-bold" for="surname">Apellido(s)</label>
                             <input class="form-control rounded-lg @error('surname') is-invalid @enderror" type="text"
-                                name="surname" id="surname" value="{{ old('surname') }}" required autocomplete="surname"
-                                autofocus>
-                            @error('surname')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
+                                name="surname" id="surname" value="{{ old('surname') }}" required "
+                                                autofocus>
+                                            @error('surname')
+                                                                <span class=" invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
 
@@ -48,7 +48,7 @@
                         <div class="form-group">
                             <label class="font-weight-bold" for="email">Email</label>
                             <input class="form-control rounded-lg  @error('email') is-invalid @enderror" type="email"
-                                name="email" id="email" value="{{ old('email') }}" required autocomplete="email">
+                                name="email" id="email" value="{{ old('email') }}" required>
                             @error('email')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -58,7 +58,7 @@
                         <div class="form-group">
                             <label class="font-weight-bold" for="phone">Teléfono</label>
                             <input class="form-control rounded-lg @error('phone') is-invalid @enderror" type="text"
-                                name="phone" id="phone" value="{{ old('phone') }}" autocomplete="phone" autofocus>
+                                name="phone" id="phone" value="{{ old('phone') }}" autofocus>
                             @error('phone')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

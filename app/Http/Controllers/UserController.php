@@ -31,7 +31,7 @@ class UserController extends Controller
     {
         return View('user.publications', [
             'User' => $User,
-            'Publications' => $User->publications()->paginate(4)
+            'Publications' => $User->publications()->orderBy('id', 'DESC')->paginate(4)
         ]);
     }
 
@@ -78,7 +78,7 @@ class UserController extends Controller
                 app(ImageController::class)->destroy($User->image_url);
             }
 
-            $User->image_url = app(ImageController::class)->store($request->user_image);
+            $User->image_url = app(ImageController::class)->store($request->user_image, 'mmRentas/users');
         }
 
         //updating the user data

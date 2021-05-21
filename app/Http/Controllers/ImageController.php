@@ -78,11 +78,11 @@ class ImageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UploadedFile $file)
+    public function store(UploadedFile $file, $path)
     {
         //Cloudinary
         return Cloudinary::upload($file->getRealPath(), [
-            'folder' => 'mmRentas/users',
+            'folder' => $path,
             'transformation' => [
                 'quality' => 'auto',
                 'fetch_format' => 'auto'

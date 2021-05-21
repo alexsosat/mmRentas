@@ -19,7 +19,7 @@
                         <div class="form-group">
                             <label class="font-weight-bold" for="title">Título de la publicación<br></label>
                             <input class="form-control rounded-lg @error('title') is-invalid @enderror" type="text"
-                                name="title" required autocomplete="title" autofocus>
+                                name="title" required value="{{ old('title') }}" autofocus>
                             @error('title')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -29,7 +29,7 @@
                         <div class="form-group">
                             <label class="font-weight-bold" for="address">Dirección<br></label>
                             <input class="form-control rounded-lg @error('address') is-invalid @enderror" type="text"
-                                name="address" required autocomplete="address" autofocus>
+                                name="address" required value="{{ old('address') }}" autofocus>
                             @error('address')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -38,8 +38,8 @@
                         </div>
                         <div class="form-group">
                             <label class="font-weight-bold" for="price">Precio</label>
-                            <input class="form-control rounded-lg @error('url') is-invalid @enderror" type="text"
-                                name="price" required autocomplete="price" autofocus>
+                            <input class="form-control rounded-lg @error('price') is-invalid @enderror" type="text"
+                                name="price" value="{{ old('price') }}" autofocus>
                             @error('price')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -50,8 +50,8 @@
                             <div class="col-md-6 mb-3">
                                 <label class="font-weight-bold" for="rooms">Cantidad de Habitaciones</label>
                                 <input class="d-none form-control rounded-lg @error('rooms') is-invalid @enderror"
-                                    id="dropdown-room-input" type="text" name="rooms" required autocomplete="rooms"
-                                    autofocus>
+                                    id="dropdown-room-input" type="text" name="rooms" required autofocus
+                                    value="{{ old('rooms') }}">
                                 @error('rooms')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -60,8 +60,14 @@
                                 <div class="dropdown">
                                     <button
                                         class="btn btn-primary dropdown-toggle btn-block text-left dropdown-button-filter"
-                                        aria-expanded="false" data-toggle="dropdown" id="dropdown-room-val"
-                                        type="button">Escoge el número de habitaciones</button>
+                                        aria-expanded="false" data-toggle="dropdown" id="dropdown-room-val" type="button">
+                                        @if (old('rooms') != null)
+                                            {{ old('rooms') }}
+
+                                        @else
+                                            Escoge el número de habitaciones
+                                        @endif
+                                    </button>
                                     <div class="dropdown-menu" id="dropdown-room">
                                         @foreach (range(0, 8) as $i)
                                             <a class="dropdown-item" href="#"
@@ -74,7 +80,7 @@
                                 <label class="font-weight-bold" label="restrooms">Cantidad de Baños</label>
                                 <input class="d-none form-control rounded-lg @error('restrooms') is-invalid @enderror"
                                     id="dropdown-restrooms-input" type="text" name="restrooms" required
-                                    autocomplete="restrooms" autofocus>
+                                    value="{{ old('restrooms') }}" autofocus>
                                 @error('restrooms')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -84,7 +90,14 @@
                                     <button
                                         class="btn btn-primary dropdown-toggle btn-block text-left dropdown-button-filter"
                                         aria-expanded="false" data-toggle="dropdown" id="dropdown-restrooms-val"
-                                        type="button">Escoge la cantidad de baños</button>
+                                        type="button">
+                                        @if (old('restrooms') != null)
+                                            {{ old('restrooms') }}
+
+                                        @else
+                                            Escoge la cantidad de baños
+                                        @endif
+                                    </button>
                                     <div class="dropdown-menu dropdown-restrooms">
                                         @foreach (range(1, 8) as $i)
                                             <a class="dropdown-item" href="#"
@@ -97,7 +110,7 @@
                         <div class="form-group">
                             <label class="font-weight-bold" for="description">Descripción</label>
                             <textarea class="form-control @error('description') is-invalid @enderror" rows="10"
-                                name="description" autocomplete="description" autofocus></textarea>
+                                name="description" value="{{ old('description') }}" autofocus></textarea>
                             @error('description')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -109,7 +122,7 @@
                             <div>
                                 <label class="font-weight-bold" for="files[]">Imágenes (máximo 5 imágenes)</label>
                                 <input class="form-control-file @error('files.*') is-invalid @enderror" type="file" multiple
-                                    name="files[]" autocomplete="files[]" autofocus>
+                                    name="files[]" value="{{ old('files') }}" autofocus>
                                 @error('files.*')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

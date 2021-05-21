@@ -71,7 +71,7 @@ class RegisterController extends Controller
 
         $image_url = null;
         if (array_key_exists('user_image', $data)) {
-            $image_url = app(ImageController::class)->store($data['user_image']);
+            $image_url = app(ImageController::class)->store($data['user_image'], 'mmRentas/users');
         }
 
         return User::create([

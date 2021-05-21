@@ -9,6 +9,21 @@ class Publication extends Model
 {
     use HasFactory;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'user_id',
+        'title',
+        'address',
+        'price',
+        'description',
+        'rooms',
+        'bathrooms'
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);

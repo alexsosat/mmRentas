@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Publication;
+use App\Models\Image;
+use App\Http\Controllers\ImageController;
 use Illuminate\Http\Request;
 
 class PublicationController extends Controller
@@ -35,7 +37,50 @@ class PublicationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //Validating the data
+        $request->validate([
+            'title' => ['required', 'string', 'max:100'],
+            'address' => ['required', 'string', 'max:255'],
+            'price' => ['nullable', 'regex:/^\d*(\.\d{2})?$/'],
+            'description' => ['nullable', 'string', 'max:490'],
+            'rooms' => ['required', 'int'],
+            'restrooms' => ['required', 'int'],
+            'files' => 'max:5',
+            'files.*' => 'mimes:jpg,png||max:5048'
+        ]);
+
+
+
+        //if description is null set a default description
+        if ($request->description === null) {
+            $request->description = 'descripción no disponible';
+        }
+
+
+        $pubId = Publication::create([
+            'user_id' => $request->user_id,
+            'title' => $request->title,
+            'description' => $request->description,
+            'address' => $request->address,
+            'price' => $request->price,
+            'rooms' => $request->rooms,
+            'bathrooms' => $request->restrooms
+        ])->id;
+
+
+        //check if the request has images
+        if ($request->hasfile('files')) {
+
+            foreach ($request->file('files') as $file) {
+                //create img in database
+                Image::create([
+                    'publication_id' => $pubId,
+                    'image_url' => app(ImageController::class)->store($file, 'mmRentas/publications/' . $pubId),
+                ]);
+            }
+        }
+
+        return redirect('/user/' . $request->user_id . '/publications');
     }
 
     /**
