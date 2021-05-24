@@ -43,7 +43,7 @@
                  <span>Eliminar</span>
 
                  <form id="delete-pub-{{ $Publication->id }}"
-                     action="{{ route('publication.delete', $Publication->id) }}" method="POST" class="d-none">
+                     action="{{ route('publication.destroy', $Publication->id) }}" method="POST" class="d-none">
                      @csrf
                      @method('delete')
                  </form>

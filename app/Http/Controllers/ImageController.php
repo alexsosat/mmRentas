@@ -45,7 +45,7 @@ class ImageController extends Controller
     }
 
     /**
-     * Show the user profile picture
+     * Show the publication thumbnail
      *
      * @return \Illuminate\Http\Response
      */
@@ -63,6 +63,29 @@ class ImageController extends Controller
 
         if ($thumbnail_url !== null) {
             $file = file_get_contents($thumbnail_url->image_url);
+        }
+
+        $response = Response::make($file, 200);
+        $response->header("Content-Type", 'image/png');
+
+        return $response;
+    }
+
+    /**
+     * Show the publication picture
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showPublicationImage(Publication $Publication, Image $Image)
+    {
+        if ($Image === null) {
+            abort(404);
+        }
+
+        $file = file_get_contents(public_path('img/defaults/publication.png'));
+
+        if ($Image->image_url !== null) {
+            $file = file_get_contents($Image->image_url);
         }
 
         $response = Response::make($file, 200);

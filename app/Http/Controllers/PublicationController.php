@@ -97,12 +97,12 @@ class PublicationController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Publication  $publication
+     * @param  \App\Models\Publication  $Publication
      * @return \Illuminate\Http\Response
      */
-    public function edit(Publication $publication)
+    public function edit(Publication $Publication)
     {
-        //
+        return View('publications.edit', compact('Publication'));
     }
 
     /**
@@ -120,11 +120,45 @@ class PublicationController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Publication  $publication
+     * @param  \App\Models\Image  $image
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Publication $publication)
+    public function destroyPublicationImage(Publication $Publication, Image $Image)
     {
-        //
+        app(ImageController::class)->destroy($Image->image_url);
+
+        Image::destroy($Image->id);
+
+        return back();
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Image  $image
+     * @return \Illuminate\Http\Response
+     */
+    public function destroyAllImages(Publication $Publication)
+    {
+        foreach ($Publication->images as $Image) {
+            app(ImageController::class)->destroy($Image->image_url);
+            Image::destroy($Image->id);
+        }
+    }
+
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Publication  $Publication
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Publication $Publication)
+    {
+
+        $this->destroyAllImages($Publication);
+
+        Publication::destroy($Publication->id);
+        return redirect()->back();
     }
 }

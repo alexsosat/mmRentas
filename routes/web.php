@@ -36,15 +36,20 @@ Route::group(['prefix' => 'user/{user:id}', 'as' => 'user.', 'namespace' => 'App
 
 Route::group(['prefix' => 'publication', 'as' => 'publication.', 'namespace' => 'App\Http\Controllers'], function () {
 
-    Route::get('/publication/create', ['as' => 'create', 'uses' => 'PublicationController@create']);
+    Route::get('/create', ['as' => 'create', 'uses' => 'PublicationController@create']);
     Route::post('/store', ['as' => 'store', 'uses' => 'PublicationController@store']);
 
     Route::prefix('/{publication:id}')->group(function () {
         Route::get('/details', ['as' => 'details', 'uses' => 'PublicationController@show']);
         Route::get('/thumbnail', ['as' => 'profile_image', 'uses' => 'ImageController@showPublicationThumbnail']);
+        Route::get('/edit', ['as' => 'edit', 'uses' => 'PublicationController@edit']);
 
-        Route::patch('/edit', ['as' => 'edit', 'uses' => 'PublicationController@edit']);
+        Route::get('/image/{image:id}', ['as' => 'image', 'uses' => 'ImageController@showPublicationImage']);
 
-        Route::delete('/delete', ['as' => 'delete', 'uses' => 'PublicationController@destroy']);
+        Route::patch('/update', ['as' => 'update', 'uses' => 'PublicationController@update']);
+
+        Route::delete('/delete', ['as' => 'destroy', 'uses' => 'PublicationController@destroy']);
+        Route::delete('/images/delete', ['as' => 'images.all.destroy', 'uses' => 'PublicationController@destroyAllImages']);
+        Route::delete('/image/{image:id}/delete', ['as' => 'image.destroy', 'uses' => 'PublicationController@destroyPublicationImage']);
     });
 });
