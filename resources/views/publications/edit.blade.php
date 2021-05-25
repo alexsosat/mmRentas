@@ -3,6 +3,22 @@
     <div class="container mb-4">
         <div class="row">
             <div class="col-md-12">
+                @if (\Session::has('success'))
+                    <div class="alert alert-success">
+
+                        {!! \Session::get('success') !!}
+
+                    </div>
+                @endif
+
+                @if (\Session::has('error'))
+                    <div class="alert alert-danger">
+
+                        {!! \Session::get('error') !!}
+
+                    </div>
+                @endif
+
                 <h1><strong>Editar Publicación</strong></h1>
             </div>
         </div>
@@ -14,7 +30,7 @@
                     <form method="post" action="{{ route('publication.update', $Publication->id) }}"
                         enctype="multipart/form-data">
                         @csrf
-                        @method('post')
+                        @method('patch')
                         <input type="hidden" name="user_id" value='{{ Auth::user()->id }}'>
 
                         <div class="form-group">

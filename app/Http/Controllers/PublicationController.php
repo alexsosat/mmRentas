@@ -86,12 +86,12 @@ class PublicationController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Publication  $publication
+     * @param  \App\Models\Publication  $Publication
      * @return \Illuminate\Http\Response
      */
-    public function show(Publication $publication)
+    public function show(Publication $Publication)
     {
-        //
+        return View('publications.show', compact('Publication'));
     }
 
     /**
@@ -109,12 +109,59 @@ class PublicationController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Publication  $publication
+     * @param  \App\Models\Publication  $Publication
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Publication $publication)
+    public function update(Request $request, Publication $Publication)
     {
-        //
+
+
+        //Validating the data
+        $request->validate([
+            'title' => ['required', 'string', 'max:100'],
+            'address' => ['required', 'string', 'max:255'],
+            'price' => ['nullable', 'regex:/^\d*(\.\d{2})?$/'],
+            'description' => ['nullable', 'string', 'max:490'],
+            'rooms' => ['required', 'int'],
+            'restrooms' => ['required', 'int'],
+            'files' => 'max:5',
+            'files.*' => 'mimes:jpg,png||max:5048'
+        ]);
+
+        //if description is null then set a default description
+        if ($request->description === null) {
+            $request->description = 'descripción no disponible';
+        }
+
+
+        //updating the user
+        $Publication->title = $request->title;
+        $Publication->address = $request->address;
+        $Publication->price = $request->price;
+        $Publication->description = $request->description;
+        $Publication->rooms = $request->rooms;
+        $Publication->bathrooms = $request->restrooms;
+
+        $Publication->update();
+
+        //Check if the data has images
+        if ($request->hasfile('files')) {
+
+            if ((count($request->file('files')) + count($Publication->images)) <= 5) {
+                foreach ($request->file('files') as $file) {
+                    //create img in database
+                    Image::create([
+                        'publication_id' => $Publication->id,
+                        'image_url' => app(ImageController::class)->store($file, 'mmRentas/publications/' . $Publication->id),
+                    ]);
+                }
+            } else {
+                return back()->with('error', 'Cantidad máxima de imágenes sobrepasada, por favor subir una cantidad permitida o eliminar imágenes');
+            }
+        }
+
+        return
+            back()->with('success', 'Publicación actualizada exitosamente');
     }
 
     /**
@@ -129,7 +176,7 @@ class PublicationController extends Controller
 
         Image::destroy($Image->id);
 
-        return back();
+        return back()->with('success', 'Imagen eliminada exitosamente');
     }
 
     /**
@@ -144,6 +191,8 @@ class PublicationController extends Controller
             app(ImageController::class)->destroy($Image->image_url);
             Image::destroy($Image->id);
         }
+
+        return back()->with('success', 'Imagenes eliminadas exitosamente');
     }
 
 
