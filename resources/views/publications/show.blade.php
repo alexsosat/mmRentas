@@ -1,8 +1,23 @@
 @extends('layouts.app')
 @section('content')
+
+    @if (!$Publication->isActive)
+        <div class="container mb-3">
+            <div class="row">
+                <div class="col-12">
+                    <div class="alert alert-danger">
+
+                        Esta publicación ha sido pausada por el rentero, vuelva a revisar más tarde
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
+
     <div class="container mb-3">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-12">
                 <h1 class="font-weight-bold">{{ $Publication->title }}<br></h1>
             </div>
         </div>
@@ -91,9 +106,8 @@
                         style="background: url({{ route('user.profile_image', $Publication->user->id) }}) center/ cover no-repeat;">
                     </div>
                     <h4 class="mb-1">{{ $Publication->user->full_name }}<br></h4>
-                    <span>{{ $Publication->user->email }}</span>
                 </div>
-                <div><a class="btn btn-primary btn-lg btn-download w-100 btn-big" href="#" target="_blank"
+                <div><a class="btn btn-primary btn-lg btn-download w-100 btn-big @if (!$Publication->isActive) disabled @endif " href="#" target="_blank"
                         role="button">Contactar</a></div>
             </div>
         </div>
