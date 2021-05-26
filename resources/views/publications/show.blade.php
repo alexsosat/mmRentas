@@ -90,26 +90,115 @@
 
                 <!-- fin de prueba -->
 
-                <div class="d-flex mx-3 justify-content-center mb-5">
-                    <div class="d-flex align-items-center mr-3"><i class="las la-bed icon icon-blue"></i><span
-                            class="font-weight-bolder">{{ $Publication->rooms }}</span></div>
-                    <div class="d-flex align-items-center"><i class="las la-toilet icon icon-blue"></i><span
-                            class="font-weight-bolder">{{ $Publication->bathrooms }}</span></div>
+                <div class="d-flex mx-3 rounded  mb-5 justify-content-between secondary-color-background">
+                    <div class="d-flex flex-column p-3">
+                        <h3>Precio</h3>
+                        <span class="h4 font-weight-bold">${{ $Publication->price }}</span>
+                    </div>
+                    <div class="d-flex align-items-center p-3 ">
+                        <div class="d-flex align-items-center mr-3">
+                            <i class="las la-bed icon icon-blue"></i>
+                            <span class="font-weight-bolder">{{ $Publication->rooms }}</span>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <i class="las la-toilet icon icon-blue"></i>
+                            <span class="font-weight-bolder">{{ $Publication->bathrooms }}</span>
+                        </div>
+                    </div>
+
+
+                    <!-- this is invisible do not touch or think in a better way for design -->
+                    <div class="d-none d-flex align-items-center p-3 invisible">
+                        <div class="d-flex align-items-center mr-3">
+
+                            <span class="font-weight-bolder">Hola</span>
+                        </div>
+                        <div class="d-flex align-items-center">
+
+                            <span class="font-weight-bolder">Mundo</span>
+                        </div>
+                    </div>
+
+                    <!-- Here ends the invisible section -->
+
                 </div>
                 <div>
                     <p>{{ $Publication->description }}<br></p>
                 </div>
             </div>
+
+
+
             <div class="col col-12 col-md-4">
-                <div class="user-detail-banner rounded d-flex flex-column align-items-center p-3 mb-3">
+                <div class="secondary-color-background rounded d-flex flex-column align-items-center p-3 mb-3">
                     <div class="rounded-circle big-user-circle mb-3"
                         style="background: url({{ route('user.profile_image', $Publication->user->id) }}) center/ cover no-repeat;">
                     </div>
                     <h4 class="mb-1">{{ $Publication->user->full_name }}<br></h4>
                 </div>
-                <div><a class="btn btn-primary btn-lg btn-download w-100 btn-big @if (!$Publication->isActive) disabled @endif " href="#" target="_blank"
-                        role="button">Contactar</a></div>
+                <div>
+                    <a class="btn btn-primary btn-lg btn-download w-100 btn-big @if (!$Publication->isActive) disabled @endif " data-toggle="modal"
+                        data-target="#UserContactModal"
+                        role="button">Contactar</a>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="UserContactModal" tabindex="-1" role="dialog"
+                        aria-labelledby="UserContactModalTitle" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="UserContactModalTitle">Contacta al rentero</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="d-flex flex-column">
+                                        <div class="d-flex align-items-center mb-3">
+                                            <i class="las la-envelope icon icon-blue"></i>
+                                            <span>{{ $Publication->user->email }}</span>
+                                            <a href="mailto:{{ $Publication->user->email }}" target="_blank"
+                                                class="btn btn-primary ml-auto">Enviar correo</a>
+                                        </div>
+                                        @if ($Publication->user->phone != null)
+                                            <div class="d-flex align-items-center mb-3">
+                                                <i class="las la-phone icon icon-blue"></i>
+                                                <span>{{ $Publication->user->phone }}</span>
+                                                <a href="tel:{{ $Publication->user->phone }}" target="_blank"
+                                                    class="btn btn-primary ml-auto">Llamar</a>
+                                            </div>
+
+                                            <div class="d-flex align-items-center mb-3">
+                                                <i class="lab la-whatsapp icon icon-blue"></i>
+                                                <span>{{ $Publication->user->phone }}</span>
+                                                <a href="https://wa.me/521{{ $Publication->user->whatsapp_phone }}"
+                                                    target="_blank" class="btn btn-primary ml-auto">Mandar mensaje</a>
+                                            </div>
+                                        @endif
+
+                                        @if ($Publication->user->facebook != null)
+                                            <div class="d-flex align-items-center mb-3">
+                                                <i class="lab la-facebook-messenger icon icon-blue"></i>
+                                                <span>{{ $Publication->user->facebook }}</span>
+                                                <a href="https://m.me/{{ $Publication->user->facebook_id }}"
+                                                    target="_blank" class="btn btn-primary ml-auto">Mandar mensaje</a>
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar
+                                        ventana</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+
+
+
+
 @endsection

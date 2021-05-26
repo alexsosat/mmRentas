@@ -49,6 +49,12 @@ class User extends Authenticatable
         return $this->name . " " . $this->surname;
     }
 
+    public function getwhatsappPhoneAttribute()
+    {
+
+        return str_replace("-", "", $this->phone);
+    }
+
     public function publications()
     {
         return $this->hasMany(Publication::class);
