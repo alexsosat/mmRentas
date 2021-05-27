@@ -23,6 +23,7 @@ class User extends Authenticatable
         'phone',
         'password',
         'image_url',
+        'facebook_url',
     ];
 
     /**
@@ -53,6 +54,12 @@ class User extends Authenticatable
     {
 
         return str_replace("-", "", $this->phone);
+    }
+
+    public function getfacebookIdAttribute()
+    {
+        $explodes = explode("/", $this->facebook_url);
+        return $explodes[3];
     }
 
     public function publications()

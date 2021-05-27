@@ -30,6 +30,7 @@ Route::group(['prefix' => 'user/{user:id}', 'as' => 'user.', 'namespace' => 'App
 
     Route::patch('/info/update', ['as' => 'info.update', 'uses' => 'UserController@updateInfo']);
     Route::patch('/password/update', ['as' => 'password.update', 'uses' => 'UserController@updatePassword']);
+    Route::patch('/contact/update', ['as' => 'contact.update', 'uses' => 'UserController@updateContactInfo']);
 
     Route::delete('/delete', ['as' => 'destroy', 'uses' => 'UserController@destroy']);
 });

@@ -176,10 +176,10 @@
                                             </div>
                                         @endif
 
-                                        @if ($Publication->user->facebook != null)
+                                        @if ($Publication->user->facebook_url != null)
                                             <div class="d-flex align-items-center mb-3">
                                                 <i class="lab la-facebook-messenger icon icon-blue"></i>
-                                                <span>{{ $Publication->user->facebook }}</span>
+                                                <span>{{ $Publication->user->facebook_id }}</span>
                                                 <a href="https://m.me/{{ $Publication->user->facebook_id }}"
                                                     target="_blank" class="btn btn-primary ml-auto">Mandar mensaje</a>
                                             </div>

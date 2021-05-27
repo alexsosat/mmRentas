@@ -37,9 +37,9 @@
                             <label class="font-weight-bold" for="surname">Apellido(s)</label>
                             <input class="form-control rounded-lg @error('surname') is-invalid @enderror" type="text"
                                 name="surname" id="surname" value="{{ old('surname') }}" required "
-                                                autofocus>
-                                            @error('surname')
-                                                                <span class=" invalid-feedback" role="alert">
+                                                    autofocus>
+                                                @error('surname')
+                                                                        <span class=" invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
@@ -55,17 +55,7 @@
                                 </span>
                             @enderror
                         </div>
-                        <div class="form-group">
-                            <label class="font-weight-bold" for="phone">Teléfono</label>
-                            <input class="form-control rounded-lg @error('phone') is-invalid @enderror" type="text"
-                                name="phone" id="phone" value="{{ old('phone') }}" autofocus>
-                            @error('phone')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
 
-                        </div>
                         <div class="form-group">
                             <label class="font-weight-bold" for="password">Contraseña</label>
                             <input class="form-control @error('password') is-invalid @enderror" type="password"

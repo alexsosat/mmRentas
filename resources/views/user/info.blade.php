@@ -65,6 +65,46 @@
                         </form>
 
                     </div>
+
+                    <div class="mb-5">
+                        <h2 class="text-grey">Información de contacto</h2>
+                        <div class="horizontal-separator w-100"></div>
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+
+                                {{ $errors->first() }}
+
+                            </div>
+                        @endif
+                        <form method="post" action="{{ route('user.contact.update', $User->id) }}">
+                            @csrf
+                            @method('patch')
+                            <div class="form-group">
+                                <label for="phone">Teléfono</label>
+                                <input class="form-control form-control @error('phone') is-invalid @enderror" type="tel"
+                                    name="phone" required autocomplete="phone">
+                            </div>
+                            <div class="form-group">
+                                <label for="facebook_url">Liga de facebook</label>
+                                <input class="form-control form-control @error('facebook_url') is-invalid @enderror"
+                                    type="text" name="facebook_url" required autocomplete="facebook_url">
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            <div class="d-flex justify-content-end">
+                                <button class="btn btn-primary search-button" type="submit">Guardar cambios</button>
+                            </div>
+                        </form>
+                    </div>
+
+
+
+
+
                     <div class="mb-5">
                         <h2 class="text-grey">Seguridad</h2>
                         <div class="horizontal-separator w-100"></div>
