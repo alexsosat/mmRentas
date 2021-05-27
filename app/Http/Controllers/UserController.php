@@ -88,6 +88,7 @@ class UserController extends Controller
      */
     public function updateContactInfo(Request $request, User $User)
     {
+        dd($request->phone, $request->phone_international);
     }
 
     /**

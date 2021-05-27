@@ -53,8 +53,9 @@ class User extends Authenticatable
     public function getwhatsappPhoneAttribute()
     {
 
-        return str_replace("-", "", $this->phone);
+        return str_replace("+", "", $this->phone);
     }
+
 
     public function getfacebookIdAttribute()
     {

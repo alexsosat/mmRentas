@@ -76,18 +76,26 @@
 
                             </div>
                         @endif
-                        <form method="post" action="{{ route('user.contact.update', $User->id) }}">
+                        <form method="post" onsubmit="process(event)" id="contact-form"
+                            action="{{ route('user.contact.update', $User->id) }}">
                             @csrf
                             @method('patch')
                             <div class="form-group">
                                 <label for="phone">Teléfono</label>
                                 <input class="form-control form-control @error('phone') is-invalid @enderror" type="tel"
-                                    name="phone" required autocomplete="phone">
+                                    name="phone" autocomplete="phone" id="phone" value="{{ $User->phone }}">
+
+                                <input class="d-none" type="text" name="phone_international" id="phone_international">
+                                @error('phone')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label for="facebook_url">Liga de facebook</label>
                                 <input class="form-control form-control @error('facebook_url') is-invalid @enderror"
-                                    type="text" name="facebook_url" required autocomplete="facebook_url">
+                                    type="text" name="facebook_url" autocomplete="facebook_url">
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -100,10 +108,6 @@
                             </div>
                         </form>
                     </div>
-
-
-
-
 
                     <div class="mb-5">
                         <h2 class="text-grey">Seguridad</h2>
