@@ -69,10 +69,10 @@
                     <div class="mb-5">
                         <h2 class="text-grey">Información de contacto</h2>
                         <div class="horizontal-separator w-100"></div>
-                        @if ($errors->any())
+                        @if (\Session::has('bad_url'))
                             <div class="alert alert-danger">
 
-                                {{ $errors->first() }}
+                                {!! \Session::get('bad_url') !!}
 
                             </div>
                         @endif
@@ -95,7 +95,7 @@
                             <div class="form-group">
                                 <label for="facebook_url">Liga de facebook</label>
                                 <input class="form-control form-control @error('facebook_url') is-invalid @enderror"
-                                    type="text" name="facebook_url" autocomplete="facebook_url">
+                                    type="text" name="facebook_url" value="{{$User->facebook_url}}" autocomplete="facebook_url">
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -108,7 +108,6 @@
                             </div>
                         </form>
                     </div>
-
                     <div class="mb-5">
                         <h2 class="text-grey">Seguridad</h2>
                         <div class="horizontal-separator w-100"></div>

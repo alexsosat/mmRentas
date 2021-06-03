@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use App\Models\Image;
+use App\Models\Publication;
 use App\Http\Controllers\ImageController;
 
 
@@ -88,7 +90,20 @@ class UserController extends Controller
      */
     public function updateContactInfo(Request $request, User $User)
     {
-        dd($request->phone, $request->phone_international);
+        if (!filter_var($request->facebook_url, FILTER_VALIDATE_URL) || !str_contains($request->facebook_url, 'https://www.facebook.com/')){
+            return back()->with('bad_url', 'La liga introducida no cumple con el formato correspondido');
+        }
+        //validating the data
+        $request->validate([
+            'phone_international' => ['string'],
+            'facebook_url' => ['string'],
+        ]);
+
+        $User->phone = $request->phone_international;
+        $User->facebook_url = $request->facebook_url;
+
+        $User->update();
+        return back()->with('success', 'Datos actualizados exitosamente');
     }
 
     /**
