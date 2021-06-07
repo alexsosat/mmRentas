@@ -16,7 +16,9 @@ class PublicationController extends Controller
      */
     public function index()
     {
-        //
+        return view('search')->with(['Publications'=>
+        Publication::select('id','title','rooms','bathrooms')->take(12)->orderBy('id', 'DESC')->get()
+        ]);
     }
 
     /**

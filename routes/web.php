@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PublicationController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -23,6 +24,8 @@ Route::get('/', function () {
 Route::get('/about', function () {
     return view('about');
 })->name("about");
+
+Route::get('/search', [PublicationController::class, 'index'])->name("search");
 
 
 Route::group(['prefix' => 'user/{user:id}', 'as' => 'user.', 'namespace' => 'App\Http\Controllers'], function () {

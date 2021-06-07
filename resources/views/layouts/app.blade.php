@@ -15,12 +15,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet"
         href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
-
-
     @yield('custom_js')
-
-
-
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -58,7 +53,7 @@
                     <div class="collapse navbar-collapse" id="navcol-1">
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item"><a class="nav-link" href="{{ url('/') }}">Home</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#">Buscar
+                            <li class="nav-item"><a class="nav-link" href="{{ route('search')}}">Buscar
                                     recursos</a></li>
                             <li class="nav-item"><a class="nav-link" href="{{ route('about') }}">Acerca de
                                     nosotros</a></li>
