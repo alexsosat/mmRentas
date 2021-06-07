@@ -1,5 +1,13 @@
 @extends('layouts.app')
 
+@section('custom_js')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js" defer></script>
+    <script src="{{ asset('js/phone_mask.js') }}" defer></script>
+    <script src="{{ asset('js/phone_input.js') }}" defer></script>
+@endsection
+
+
 @section('content')
     <div class="container">
         <div class="row">

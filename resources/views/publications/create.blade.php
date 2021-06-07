@@ -1,4 +1,9 @@
 @extends('layouts.app')
+
+@section('custom_js')
+    <script src="{{ asset('js/dropdowns.js') }}"></script>
+@endsection
+
 @section('content')
     <div class="container mb-4">
         <div class="row">

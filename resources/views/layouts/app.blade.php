@@ -15,10 +15,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet"
         href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js" defer></script>
-    <script src="{{ asset('js/phone_mask.js') }}" defer></script>
-    <script src="{{ asset('js/dropdowns.js') }}"></script>
+
+
+    @yield('custom_js')
 
 
 
@@ -61,7 +60,7 @@
                             <li class="nav-item"><a class="nav-link" href="{{ url('/') }}">Home</a></li>
                             <li class="nav-item"><a class="nav-link" href="#">Buscar
                                     recursos</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#">Acerca de
+                            <li class="nav-item"><a class="nav-link" href="{{ route('about') }}">Acerca de
                                     nosotros</a></li>
                         </ul>
                         @if (Route::has('login'))
@@ -128,30 +127,6 @@
     </div>
 
 </body>
-
-<script>
-    const phoneInputField = document.querySelector("#phone");
-    const phoneInput = window.intlTelInput(phoneInputField, {
-        initialCountry: "mx",
-        preferredCountries: ["us", "mx"],
-        separateDialCode: true,
-        utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
-    });
-
-
-
-    function process(event) {
-        event.preventDefault();
-
-
-        const phoneField = document.getElementById("phone_international");
-        phoneField.value = phoneInput.getNumber();
-
-
-        document.getElementById('contact-form').submit();
-    }
-
-</script>
 
 
 </html>
