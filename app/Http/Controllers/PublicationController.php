@@ -22,6 +22,18 @@ class PublicationController extends Controller
     }
 
     /**
+     * Returns the publications that matches the desired parameters
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function search(Request $request)
+    {
+        dd($request->key_words);
+       return back();
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response

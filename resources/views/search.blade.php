@@ -1,4 +1,9 @@
 @extends('layouts.app')
+
+@section('custom_js')
+    <script src="{{ asset('js/dropdowns.js') }}"></script>
+@endsection
+
 @section('content')
 
 
@@ -12,20 +17,74 @@
     </div>
     <section class="search-section mb-5">
         <div class="container">
-            <div class="row">
-                <div class="col-md-12 d-flex justify-content-center">
-                    <div class="w-100">
-                        <form class="d-flex w-100 align-items-center justify-content-center flex-column flex-sm-row"
-                            action="#" method="GET">
+            <form role="form" action="{{route('results')}}" method="GET">
+                <div class="row mb-4">
+                    <div class="col-md-12 d-flex justify-content-center">
+                        <div class="d-flex w-100 align-items-center justify-content-center flex-column flex-sm-row">
+
                             <input class="form-control rounded w-100 form-control" type="text" placeholder="Palabras clave"
-                                name="key-words">
+                                name="key_words" value="{{old('key_words')}}">
+                            <input type="text" name="rooms" id="dropdown-room-input" value="{{old('rooms')}}">
+                            <input type="text" name="bathrooms" id="dropdown-bathroom-input" value="{{old('bathrooms')}}">
                             <div class="my-2 d-block d-sm-none"></div>
                             <div class="mx-3 d-none d-sm-block"></div><button
                                 class="btn btn-primary search-button btn-block" type="submit">Buscar</button>
-                        </form>
+
+                        </div>
                     </div>
                 </div>
-            </div>
+                <div class="row">
+                    <div class="col-12 d-flex mb-3">
+                        <span class="w-100 text-center text-grey">Ajustes avanzados</span>
+                    </div>
+                    <div class="col-3">
+                        <div class="dropdown">
+                            <button class="btn btn-primary dropdown-toggle btn-block text-left dropdown-button-filter"
+                                aria-expanded="false" data-toggle="dropdown" id="dropdown-room-val" type="button">
+                                @if (old('rooms') != null)
+                                    {{ old('rooms') }}
+
+                                @else
+                                    Cantidad de habitaciones
+                                @endif
+                            </button>
+                            <div class="dropdown-menu" id="dropdown-room">
+                                @foreach (range(0, 8) as $i)
+                                    <a class="dropdown-item" href="#"
+                                        onclick="event.preventDefault();changeDropdownText('dropdown-room-val','{{ $i }}','dropdown-room-input',{{ $i }})">{{ $i }}</a>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="dropdown">
+                            <button class="btn btn-primary dropdown-toggle btn-block text-left dropdown-button-filter"
+                                aria-expanded="false" data-toggle="dropdown" id="dropdown-bathroom-val" type="button">
+                                @if (old('bathroom') != null)
+                                    {{ old('bathroom') }}
+
+                                @else
+                                    Cantidad de baños
+                                @endif
+                            </button>
+                            <div class="dropdown-menu" id="dropdown-bathroom">
+                                @foreach (range(0, 8) as $i)
+                                    <a class="dropdown-item" href="#"
+                                        onclick="event.preventDefault();changeDropdownText('dropdown-bathroom-val','{{ $i }}','dropdown-bathroom-input',{{ $i }})">{{ $i }}</a>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <input class="form-control rounded w-100 form-control" type="text" placeholder="Precio mímimo"
+                            name="min_price" value="{{old('min_price')}}">
+                    </div>
+                    <div class="col-3">
+                        <input class="form-control rounded w-100 form-control" type="text" placeholder="Precio máximo"
+                            name="max_price" value="{{old('max_price')}}">
+                    </div>
+                </div>
+            </form>
         </div>
     </section>
 

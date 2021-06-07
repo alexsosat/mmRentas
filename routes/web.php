@@ -26,6 +26,7 @@ Route::get('/about', function () {
 })->name("about");
 
 Route::get('/search', [PublicationController::class, 'index'])->name("search");
+Route::get('/results', [PublicationController::class, 'search'])->name("results");
 
 
 Route::group(['prefix' => 'user/{user:id}', 'as' => 'user.', 'namespace' => 'App\Http\Controllers'], function () {
