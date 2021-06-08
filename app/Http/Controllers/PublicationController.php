@@ -16,8 +16,9 @@ class PublicationController extends Controller
      */
     public function index()
     {
-        return view('search')->with(['Publications'=>
-        Publication::select('id','title','rooms','bathrooms')->take(12)->orderBy('id', 'DESC')->get()
+        return view('search')->with([
+            'Publications' =>
+            Publication::select('id', 'title', 'rooms', 'bathrooms')->take(12)->orderBy('id', 'DESC')->get()
         ]);
     }
 
@@ -29,8 +30,51 @@ class PublicationController extends Controller
      */
     public function search(Request $request)
     {
-        dd($request->key_words);
-       return back();
+        $titlePublications = Publication::select('id', 'user_id', 'title', 'description', 'rooms', 'bathrooms', 'price')
+            ->where('title', 'LIKE', "%{$request->key_words}%");
+
+        $descriptionPublications = Publication::select('id', 'user_id', 'title', 'description', 'rooms', 'bathrooms', 'price')
+            ->where('description', 'LIKE', "%{$request->key_words}%");
+
+
+        if ($request->rooms != null) {
+            $titlePublications = $titlePublications->where('rooms', '=', $request->rooms);
+            $descriptionPublications = $descriptionPublications->where('rooms', '=', $request->rooms);
+        }
+
+        if ($request->bathrooms != null) {
+            $titlePublications = $titlePublications->where('bathrooms', '=', $request->bathrooms);
+            $descriptionPublications = $descriptionPublications->where('bathrooms', '=', $request->bathrooms);
+        }
+
+
+        if ($request->min_price != null && $request->max_price != null)
+            if ($request->min_price > $request->max_price) return back()->with('error', 'El valor del precio mínimo no puede ser mayor a la cantidad máxima');
+
+
+        if ($request->min_price != null) {
+            $titlePublications = $titlePublications->where('price', '>=', $request->min_price);
+            $descriptionPublications = $descriptionPublications->where('price', '>=', $request->min_price);
+        }
+
+        if ($request->max_price != null) {
+            $titlePublications = $titlePublications->where('price', '<=', $request->max_price);
+            $descriptionPublications = $descriptionPublications->where('price', '<=', $request->max_price);
+        }
+
+        //dd($titlePublications->paginate(5), $descriptionPublications->paginate(5));
+
+
+        $col1 = $titlePublications->get();
+        $col2 = $descriptionPublications->get();
+
+        $Publications = $col1->merge($col2);
+
+        dd($Publications->paginate(5));
+
+
+        // Return the search view with the resluts compacted
+        return view('results', compact('Publications'));
     }
 
     /**
