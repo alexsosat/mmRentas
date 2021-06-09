@@ -17,7 +17,7 @@
                     </div>
                     <!-- de aqui -->
                     @forelse ($Publications as $Publication)
-                        <x-publication-card pub="{{ $Publication->id }}" />
+                        <x-publication-card pub="{{ $Publication->id }}" editable="true" />
                     @empty
                         <div class="container empty-pubs">
                             <div class="row mb-3 h-100">

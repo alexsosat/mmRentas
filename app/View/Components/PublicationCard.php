@@ -8,14 +8,17 @@ use Illuminate\View\Component;
 class PublicationCard extends Component
 {
     public $pub;
+    public $editable;
+
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($pub)
+    public function __construct($pub, $editable)
     {
         $this->pub = $pub;
+        $this->editable = $editable;
     }
 
     /**

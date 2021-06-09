@@ -17,15 +17,17 @@
     </div>
     <section class="search-section mb-5">
         <div class="container">
-            <form role="form" action="{{route('results')}}" method="GET">
+            <form role="form" action="{{ route('results') }}" method="GET">
                 <div class="row mb-4">
                     <div class="col-md-12 d-flex justify-content-center">
                         <div class="d-flex w-100 align-items-center justify-content-center flex-column flex-sm-row">
 
                             <input class="form-control rounded w-100 form-control" type="text" placeholder="Palabras clave"
-                                name="key_words" value="{{old('key_words')}}">
-                            <input type="text" name="rooms" id="dropdown-room-input" value="{{old('rooms')}}">
-                            <input type="text" name="bathrooms" id="dropdown-bathroom-input" value="{{old('bathrooms')}}">
+                                name="key_words" value="{{ old('key_words') }}">
+                            <input class="d-none" type="text" name="rooms" id="dropdown-room-input"
+                                value="{{ old('rooms') }}">
+                            <input class="d-none" type="text" name="bathrooms" id="dropdown-bathroom-input"
+                                value="{{ old('bathrooms') }}">
                             <div class="my-2 d-block d-sm-none"></div>
                             <div class="mx-3 d-none d-sm-block"></div><button
                                 class="btn btn-primary search-button btn-block" type="submit">Buscar</button>
@@ -77,11 +79,11 @@
                     </div>
                     <div class="col-3">
                         <input class="form-control rounded w-100 form-control" type="text" placeholder="Precio mímimo"
-                            name="min_price" value="{{old('min_price')}}">
+                            name="min_price" value="{{ old('min_price') }}">
                     </div>
                     <div class="col-3">
                         <input class="form-control rounded w-100 form-control" type="text" placeholder="Precio máximo"
-                            name="max_price" value="{{old('max_price')}}">
+                            name="max_price" value="{{ old('max_price') }}">
                     </div>
                 </div>
             </form>

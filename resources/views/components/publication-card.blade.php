@@ -1,3 +1,8 @@
+ @if ($editable == 'false')
+     <div class="result-link" onclick="window.location='{{ route('publication.details', $Publication->id) }}'">
+ @endif
+
+
  <div class="result-card-item text-left d-sm-flex mb-4">
      <div class="result-img"
          style="background: url(/publication/{{ $Publication->id }}/thumbnail) center / cover no-repeat;">
@@ -28,26 +33,46 @@
              </p>
          </div>
          <div class="horizontal-separator"></div>
-         <div class="d-flex justify-content-around flex-column flex-sm-row">
-             <a class="btn-ver mb-2" href="{{ route('publication.details', $Publication->id) }}">
-                 <i class="fas fa-eye mr-1"></i>
-                 <span>Ver</span>
-             </a>
-             <a class="btn-editar mb-2" href="{{ route('publication.edit', $Publication->id) }}">
-                 <i class="fas fa-edit mr-1"></i>
-                 <span>Editar</span>
-             </a>
-             <a class="btn-borrar mb-2" href="#"
-                 onclick="event.preventDefault();if(confirm('¿Estas seguro de eliminar esta publicación?\nEsta acción no se podrá deshacer')){document.getElementById('delete-pub-{{ $Publication->id }}').submit();}">
-                 <i class=" fas fa-trash mr-1"></i>
-                 <span>Eliminar</span>
 
-                 <form id="delete-pub-{{ $Publication->id }}"
-                     action="{{ route('publication.destroy', $Publication->id) }}" method="POST" class="d-none">
-                     @csrf
-                     @method('delete')
-                 </form>
-             </a>
-         </div>
+         @if ($editable == 'true')
+             <div class="d-flex justify-content-around flex-column flex-sm-row">
+                 <a class="btn-ver mb-2" href="{{ route('publication.details', $Publication->id) }}">
+                     <i class="fas fa-eye mr-1"></i>
+                     <span>Ver</span>
+                 </a>
+                 <a class="btn-editar mb-2" href="{{ route('publication.edit', $Publication->id) }}">
+                     <i class="fas fa-edit mr-1"></i>
+                     <span>Editar</span>
+                 </a>
+                 <a class="btn-borrar mb-2" href="#"
+                     onclick="event.preventDefault();if(confirm('¿Estas seguro de eliminar esta publicación?\nEsta acción no se podrá deshacer')){document.getElementById('delete-pub-{{ $Publication->id }}').submit();}">
+                     <i class=" fas fa-trash mr-1"></i>
+                     <span>Eliminar</span>
+
+                     <form id="delete-pub-{{ $Publication->id }}"
+                         action="{{ route('publication.destroy', $Publication->id) }}" method="POST" class="d-none">
+                         @csrf
+                         @method('delete')
+                     </form>
+                 </a>
+             </div>
+
+         @else
+             <div class="d-flex align-items-center">
+                 <span class="result-card-item-published">Publicado por:</span>
+                 <div class="d-flex align-items-center pub-user">
+                     <div class="rounded-circle circle-image"
+                         style="background:url({{ route('user.profile_image', $Publication->user->id) }}) center / cover no-repeat;">
+                     </div>
+                     <span>{{ $Publication->user->full_name }}</span>
+                 </div>
+             </div>
+         @endif
+
+
      </div>
  </div>
+
+ @if ($editable == 'false')
+     </div>
+ @endif

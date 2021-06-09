@@ -70,11 +70,8 @@ class PublicationController extends Controller
 
         $Publications = $col1->merge($col2);
 
-        dd($Publications->paginate(5));
-
-
         // Return the search view with the resluts compacted
-        return view('results', compact('Publications'));
+        return view('publications.results')->with(compact('Publications', 'request'));
     }
 
     /**
