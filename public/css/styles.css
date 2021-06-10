@@ -366,3 +366,11 @@ a:hover {
 .empty-pubs {
     height: 50vh;
 }
+
+.filter-input{
+    border-color: #3490dc;
+}
+
+.filter-input::placeholder{
+   color: black;
+}

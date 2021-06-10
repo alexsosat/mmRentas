@@ -31,10 +31,10 @@ class PublicationController extends Controller
     public function search(Request $request)
     {
         $titlePublications = Publication::select('id', 'user_id', 'title', 'description', 'rooms', 'bathrooms', 'price')
-            ->where('title', 'LIKE', "%{$request->key_words}%");
+            ->where('title', 'LIKE', "%{$request->key_words}%")->where('isActive', '=', 1);
 
         $descriptionPublications = Publication::select('id', 'user_id', 'title', 'description', 'rooms', 'bathrooms', 'price')
-            ->where('description', 'LIKE', "%{$request->key_words}%");
+            ->where('description', 'LIKE', "%{$request->key_words}%")->where('isActive', '=', 1);
 
 
         if ($request->rooms != null) {
@@ -62,13 +62,11 @@ class PublicationController extends Controller
             $descriptionPublications = $descriptionPublications->where('price', '<=', $request->max_price);
         }
 
-        //dd($titlePublications->paginate(5), $descriptionPublications->paginate(5));
-
 
         $col1 = $titlePublications->get();
         $col2 = $descriptionPublications->get();
 
-        $Publications = $col1->merge($col2);
+        $Publications = $col1->merge($col2)->paginate(5);
 
         // Return the search view with the resluts compacted
         return view('publications.results')->with(compact('Publications', 'request'));

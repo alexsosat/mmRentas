@@ -78,12 +78,12 @@
                         </div>
                     </div>
                     <div class="col-3">
-                        <input class="form-control rounded w-100 form-control" type="text" placeholder="Precio mímimo"
-                            name="min_price" value="{{ old('min_price') }}">
+                        <input class="form-control rounded w-100 form-control filter-input" type="text"
+                            placeholder="Precio mímimo" name="min_price" value="{{ old('min_price') }}">
                     </div>
                     <div class="col-3">
-                        <input class="form-control rounded w-100 form-control" type="text" placeholder="Precio máximo"
-                            name="max_price" value="{{ old('max_price') }}">
+                        <input class="form-control rounded w-100 form-control filter-input" type="text"
+                            placeholder="Precio máximo" name="max_price" value="{{ old('max_price') }}">
                     </div>
                 </div>
             </form>

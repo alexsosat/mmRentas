@@ -76,7 +76,7 @@
                  </div>
              </div>
              <div class="col col-12 col-lg-8">
-                 <div class="d-flex section"><span id="result-coinc" class="mr-auto">{{ $Publications->count() }}
+                 <div class="d-flex section"><span id="result-coinc" class="mr-auto">{{ $Publications->total() }}
                          Coincidencias con tu búsqueda.</span>
                      <div class="dropdown"><button class="btn btn-primary dropdown-toggle dropdown-button-filter d-none"
                              aria-expanded="false" data-toggle="dropdown" id="dropdown-sort-filter" type="button"
@@ -105,7 +105,7 @@
 
              <div class="d-flex justify-content-end mb-5">
                  <nav>
-
+                     {{ $Publications->links('pagination::bootstrap-4') }}
                  </nav>
              </div>
          </div>
