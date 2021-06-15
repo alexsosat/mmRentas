@@ -90,7 +90,7 @@
 
                 <!-- fin de prueba -->
 
-                <div class="d-flex mx-3 rounded  mb-5 justify-content-between secondary-color-background">
+                <div class="d-flex mx-3 rounded  mb-4 justify-content-between secondary-color-background">
                     <div class="d-flex flex-column p-3">
                         <h3>Precio</h3>
                         <span class="h4 font-weight-bold">${{ $Publication->price }}</span>
@@ -108,22 +108,21 @@
 
 
                     <!-- this is invisible do not touch or think in a better way for design -->
-                    <div class="d-none d-flex align-items-center p-3 invisible">
+                    <div class=" d-flex align-items-center p-3 ">
                         <div class="d-flex align-items-center mr-3">
-
-                            <span class="font-weight-bolder">Hola</span>
-                        </div>
-                        <div class="d-flex align-items-center">
-
-                            <span class="font-weight-bolder">Mundo</span>
+                            {{ $Publication->address }}
                         </div>
                     </div>
 
                     <!-- Here ends the invisible section -->
 
                 </div>
-                <div>
+                <div class="mb-4">
                     <p>{{ $Publication->description }}<br></p>
+                </div>
+                <div>
+                    <iframe class="w-100" height="450" style="border:0" loading="lazy" allowfullscreen
+                        src="https://www.google.com/maps/embed/v1/place?q={{ $Publication->address }}&key={{ env('MAPS_KEY', false) }}&zoom=19"></iframe>
                 </div>
             </div>
 
@@ -193,6 +192,8 @@
                             </div>
                         </div>
                     </div>
+
+
                 </div>
             </div>
         </div>

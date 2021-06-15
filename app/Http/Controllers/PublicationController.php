@@ -6,9 +6,11 @@ use App\Models\Publication;
 use App\Models\Image;
 use App\Http\Controllers\ImageController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 
 class PublicationController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
