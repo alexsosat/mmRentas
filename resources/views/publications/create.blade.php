@@ -42,7 +42,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label class="font-weight-bold" for="price">Precio</label>
+                            <label class="font-weight-bold" for="price">Precio (favor de no colocar símbolos)</label>
                             <input class="form-control rounded-lg @error('price') is-invalid @enderror" type="text"
                                 name="price" value="{{ old('price') }}" autofocus>
                             @error('price')
