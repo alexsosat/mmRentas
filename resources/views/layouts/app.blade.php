@@ -53,8 +53,8 @@
                     <div class="collapse navbar-collapse" id="navcol-1">
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item"><a class="nav-link" href="{{ url('/') }}">Home</a></li>
-                            <li class="nav-item"><a class="nav-link" href="{{ route('search')}}">Buscar
-                                    recursos</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ route('search') }}">Buscar
+                                    departamento</a></li>
                             <li class="nav-item"><a class="nav-link" href="{{ route('about') }}">Acerca de
                                     nosotros</a></li>
                         </ul>

@@ -22,10 +22,9 @@
                         <div class="container empty-pubs">
                             <div class="row mb-3 h-100">
                                 <div class="col-md-12 my-auto">
-                                    <h3 class="text-center font-weight-bolder"> Vaya parece que no tienes recursos
+                                    <h3 class="text-center font-weight-bolder"> Vaya parece que no tienes departamentos
                                         publicados,
-                                        comienza creando
-                                        tu primera publicación dando click al botón de arriba
+                                        comienza creando tu primera publicación dando click al botón de arriba
                                     </h3>
                                 </div>
                             </div>

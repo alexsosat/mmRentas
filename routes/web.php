@@ -60,6 +60,7 @@ Route::group(['prefix' => 'publication', 'as' => 'publication.', 'namespace' => 
         Route::get('/image/{image:id}', ['as' => 'image', 'uses' => 'ImageController@showPublicationImage']);
 
         Route::patch('/update', ['as' => 'update', 'uses' => 'PublicationController@update'])->middleware('auth', 'verified', 'publicationBelongsToUser');
+        Route::patch('/pause', ['as' => 'pause', 'uses' => 'PublicationController@pause'])->middleware('auth', 'verified', 'publicationBelongsToUser');
 
         Route::delete('/delete', ['as' => 'destroy', 'uses' => 'PublicationController@destroy'])->middleware('auth', 'verified', 'publicationBelongsToUser');
         Route::delete('/images/delete', ['as' => 'images.all.destroy', 'uses' => 'PublicationController@destroyAllImages'])->middleware('auth', 'verified', 'publicationBelongsToUser');

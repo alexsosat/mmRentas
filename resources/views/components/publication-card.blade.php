@@ -44,6 +44,24 @@
                      <i class="fas fa-edit mr-1"></i>
                      <span>Editar</span>
                  </a>
+                 <a class="btn-pausar mb-2" href="#"
+                     onclick="event.preventDefault();if(confirm('¿Estas seguro de realizar esta acción?')){document.getElementById('pause-pub-{{ $Publication->id }}').submit();}">
+
+                     @if ($Publication->isActive)
+                         <i class="fas fa-pause mr-1"></i>
+                         <span>Pausar</span>
+                     @else
+                         <i class="fas fa-play mr-1"></i>
+                         <span>Reanudar</span>
+                     @endif
+
+
+                     <form id="pause-pub-{{ $Publication->id }}"
+                         action="{{ route('publication.pause', $Publication->id) }}" method="POST" class="d-none">
+                         @csrf
+                         @method('patch')
+                     </form>
+                 </a>
                  <a class="btn-borrar mb-2" href="#"
                      onclick="event.preventDefault();if(confirm('¿Estas seguro de eliminar esta publicación?\nEsta acción no se podrá deshacer')){document.getElementById('delete-pub-{{ $Publication->id }}').submit();}">
                      <i class=" fas fa-trash mr-1"></i>

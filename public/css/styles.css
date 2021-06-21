@@ -308,7 +308,18 @@ a:hover {
     border-radius: 10px;
 }
 
+.btn-pausar {
+    background-color: #797979;
+    color: white;
+    padding: 5px;
+    border-radius: 10px;
+}
+
 .btn-editar:hover {
+    color: black;
+}
+
+.btn-pausar:hover {
     color: black;
 }
 

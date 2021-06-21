@@ -20,7 +20,7 @@ class PublicationController extends Controller
     {
         return view('search')->with([
             'Publications' =>
-            Publication::select('id', 'title', 'rooms', 'bathrooms')->take(12)->orderBy('id', 'DESC')->get()
+            Publication::select('id', 'title', 'rooms', 'bathrooms')->where('isActive', '=', 1)->take(12)->orderBy('id', 'DESC')->get()
         ]);
     }
 
@@ -248,6 +248,21 @@ class PublicationController extends Controller
         }
 
         return back()->with('success', 'Imagenes eliminadas exitosamente');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Publication  $Publication
+     * @return \Illuminate\Http\Response
+     */
+    public function pause(Publication $Publication)
+    {
+
+        $Publication->isActive = !($Publication->isActive);
+
+        $Publication->update();
+        return redirect()->back();
     }
 
 

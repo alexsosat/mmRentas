@@ -135,7 +135,8 @@
                                 @enderror
                             </div>
                         </div>
-                        <button class="btn btn-primary btn-block search-button mb-3" type="submit">Publicar recurso</button>
+                        <button class="btn btn-primary btn-block search-button mb-3" type="submit">Publicar
+                            departamento</button>
                     </form>
                 </div>
             </div>

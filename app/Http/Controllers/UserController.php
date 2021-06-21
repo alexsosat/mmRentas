@@ -90,14 +90,12 @@ class UserController extends Controller
      */
     public function updateContactInfo(Request $request, User $User)
     {
-        if (!filter_var($request->facebook_url, FILTER_VALIDATE_URL) || !str_contains($request->facebook_url, 'https://www.facebook.com/')){
-            return back()->with('bad_url', 'La liga introducida no cumple con el formato correspondido');
+        if ($request->facebook_url != null) {
+            if (!filter_var($request->facebook_url, FILTER_VALIDATE_URL) || !str_contains($request->facebook_url, 'https://www.facebook.com/')) {
+                return back()->with('bad_url', 'La liga introducida no cumple con el formato correspondido');
+            }
         }
-        //validating the data
-        $request->validate([
-            'phone_international' => ['string'],
-            'facebook_url' => ['string'],
-        ]);
+
 
         $User->phone = $request->phone_international;
         $User->facebook_url = $request->facebook_url;

@@ -158,7 +158,7 @@
                             </div>
                         </div>
                         <button class="btn btn-primary btn-block search-button mb-3" type="submit">Actualizar
-                            publicación</button>
+                            departamento</button>
                     </form>
                 </div>
             </div>

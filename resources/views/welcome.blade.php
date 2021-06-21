@@ -7,7 +7,7 @@
                 <div
                     class="col-md-6 d-md-flex d-lg-flex d-xl-flex flex-column justify-content-md-center justify-content-lg-center justify-content-xl-center">
                     <h1 id="heading" style="font-size: 56px;">MM. Rentas</h1>
-                    <p style="font-size: 24px;">Proveyendote un departamento para ti y tus connocidos<br></p>
+                    <p style="font-size: 24px;">Proveyendote un departamento para ti y tus conocidos<br></p>
                     <div id="main-search-bar" class="rounded px-3 pt-3 pb-2 w-100">
                         <form class="d-flex flex-column flex-sm-row justify-content-between align-items-center"
                             method="GET">
