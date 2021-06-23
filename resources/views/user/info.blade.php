@@ -3,8 +3,8 @@
 @section('custom_js')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js" defer></script>
-    <script src="{{ asset('js/phone_mask.js') }}" defer></script>
-    <script src="{{ asset('js/phone_input.js') }}" defer></script>
+    <script src="{{ secure_asset('js/phone_mask.js') }}" defer></script>
+    <script src="{{ secure_asset('js/phone_input.js') }}" defer></script>
 @endsection
 
 
@@ -103,7 +103,8 @@
                             <div class="form-group">
                                 <label for="facebook_url">Liga de facebook</label>
                                 <input class="form-control form-control @error('facebook_url') is-invalid @enderror"
-                                    type="text" name="facebook_url" value="{{$User->facebook_url}}" autocomplete="facebook_url">
+                                    type="text" name="facebook_url" value="{{ $User->facebook_url }}"
+                                    autocomplete="facebook_url">
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

@@ -8,10 +8,10 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'mmRentas') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ secure_asset('js/app.js') }}" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet"
         href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
@@ -24,13 +24,13 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/Drag-Drop-File-Input-Upload.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/Footer-Dark.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/Navigation-with-Button.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/Team-Boxed.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/Carousel.css') }}">
+    <link rel="stylesheet" href="{{ secure_asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ secure_asset('css/Drag-Drop-File-Input-Upload.css') }}">
+    <link rel="stylesheet" href="{{ secure_asset('css/Footer-Dark.css') }}">
+    <link rel="stylesheet" href="{{ secure_asset('css/Navigation-with-Button.css') }}">
+    <link rel="stylesheet" href="{{ secure_asset('css/styles.css') }}">
+    <link rel="stylesheet" href="{{ secure_asset('css/Team-Boxed.css') }}">
+    <link rel="stylesheet" href="{{ secure_asset('css/Carousel.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
 
 </head>
@@ -42,7 +42,7 @@
                 <div class="container">
                     <a class="navbar-brand" href="{{ url('/') }}">
                         <div class="d-flex flex-column align-items-center">
-                            <img id="nav-logo" src="{{ asset('img/logo_nav.png') }}" width="75%">
+                            <img id="nav-logo" src="{{ secure_asset('img/logo_nav.png') }}" width="75%">
                             <span>MM. Rentas</span>
                         </div>
                     </a>
@@ -114,7 +114,7 @@
 
         </div>
         <footer class="footer-dark">
-            <div class="container"><img class="mx-auto d-block" src="{{ asset('img/rentas_logo.png') }}">
+            <div class="container"><img class="mx-auto d-block" src="{{ secure_asset('img/rentas_logo.png') }}">
                 <p class="copyright">MM Rentas</p>
             </div>
         </footer>

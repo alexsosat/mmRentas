@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="d-flex justify-content-center align-items-center mb-3">
-                    <img class="mx-3" src="{{ asset('img/logo_nav.png') }}">
+                    <img class="mx-3" src="{{ secure_asset('img/logo_nav.png') }}">
                     <h1 class="text-blue font-weight-bold mb-3 text-center my-auto">MM Rentas<br></h1>
                 </div>
                 <h3 class="text-center font-weight-bold">

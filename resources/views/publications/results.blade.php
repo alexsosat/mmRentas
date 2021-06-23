@@ -1,8 +1,8 @@
  @extends('layouts.app')
 
  @section('custom_js')
-     <script src="{{ asset('js/dropdowns.js') }}"></script>
-     <script src="{{ asset('js/clear_filters.js') }}"></script>
+     <script src="{{ secure_asset('js/dropdowns.js') }}"></script>
+     <script src="{{ secure_asset('js/clear_filters.js') }}"></script>
  @endsection
 
  @section('content')

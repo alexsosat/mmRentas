@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="d-flex justify-content-center align-items-center mb-3"><img class="mx-3"
-                        src="{{ asset('img/logo_nav.png') }}">
+                        src="{{ secure_asset('img/logo_nav.png') }}">
                     <h1 class="text-blue font-weight-bold mb-3 text-center my-auto">MM Rentas<br></h1>
                 </div>
                 <h3 class="text-center font-weight-bold">
@@ -37,9 +37,9 @@
                             <label class="font-weight-bold" for="surname">Apellido(s)</label>
                             <input class="form-control rounded-lg @error('surname') is-invalid @enderror" type="text"
                                 name="surname" id="surname" value="{{ old('surname') }}" required "
-                                                    autofocus>
-                                                @error('surname')
-                                                                        <span class=" invalid-feedback" role="alert">
+                                                        autofocus>
+                                                    @error('surname')
+                                                                                <span class=" invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                                 </span>
                             @enderror

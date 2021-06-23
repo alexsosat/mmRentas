@@ -44,7 +44,7 @@
                             @empty
                                 <div class="carousel-item active">
                                     <div class="d-block slide-image"
-                                        style="background:url('{{ asset('img/defaults/publication.png') }}')center / contain no-repeat, #F3F3FA;">
+                                        style="background:url('{{ secure_asset('img/defaults/publication.png') }}')center / contain no-repeat, #F3F3FA;">
                                     </div>
                                 </div>
                             @endforelse
@@ -76,7 +76,7 @@
                             @empty
                                 <li data-target="#myCarousel" data-slide-to="0" class="active  mb-3 mr-3">
                                     <div class="d-block slide-control"
-                                        style="background:url('{{ asset('img/defaults/publication.png') }}') center / cover no-repeat;">
+                                        style="background:url('{{ secure_asset('img/defaults/publication.png') }}') center / cover no-repeat;">
                                     </div>
                                 </li>
                             @endforelse

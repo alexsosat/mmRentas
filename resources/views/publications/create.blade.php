@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('custom_js')
-    <script src="{{ asset('js/dropdowns.js') }}"></script>
+    <script src="{{ secure_asset('js/dropdowns.js') }}"></script>
 @endsection
 
 @section('content')

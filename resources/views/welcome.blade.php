@@ -22,7 +22,7 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <img src="{{ asset('img/header picture.jpg') }}" alt="image header">
+                    <img src="{{ secure_asset('img/header picture.jpg') }}" alt="image header">
 
                 </div>
             </div>

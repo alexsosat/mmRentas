@@ -11,7 +11,7 @@
                  </div>
              </div>
              <div class="col col-12 col-lg-7">
-                 <img src="{{ asset('img/team.png') }}" alt="Team">
+                 <img src="{{ secure_asset('img/team.png') }}" alt="Team">
              </div>
 
          </div>
@@ -24,7 +24,8 @@
              </div>
              <div class="row d-lg-flex d-xl-flex justify-content-lg-center justify-content-xl-center people">
                  <div class="col-md-6 col-lg-4 item">
-                     <div class="box shadow rounded"><img class="rounded-circle" src="{{ asset('img/developers/Alejandro.jpg') }}">
+                     <div class="box shadow rounded"><img class="rounded-circle"
+                             src="{{ secure_asset('img/developers/Alejandro.jpg') }}">
                          <h3 class="name">Alejandro Sosa</h3>
                          <p class="title">Ingeniero en Sistemas</p>
                          <p class="description">Ingeniero enfocado en el área de desarrollo de videojuegos y desarrollo
@@ -43,7 +44,8 @@
                      </div>
                  </div>
                  <div class="col-md-6 col-lg-4 item">
-                     <div class="box shadow rounded"><img class="rounded-circle" src="{{ asset('img/developers/Miguel.jpg') }}">
+                     <div class="box shadow rounded"><img class="rounded-circle"
+                             src="{{ secure_asset('img/developers/Miguel.jpg') }}">
                          <h3 class="name">Miguel Varela</h3>
                          <p class="title"><strong>INGENIERO EN SISTEMAS</strong><br></p>
                          <p class="description">Ingeniero ..... . Actualmente trabajando para el área de Emprendum en la
@@ -56,7 +58,8 @@
                      </div>
                  </div>
                  <div class="col-md-6 col-lg-4 item">
-                     <div class="box shadow rounded"><img class="rounded-circle" src="{{ asset('img/developers/Freddy.jpg') }}">
+                     <div class="box shadow rounded"><img class="rounded-circle"
+                             src="{{ secure_asset('img/developers/Freddy.jpg') }}">
                          <h3 class="name">Freddy Santos</h3>
                          <p class="title"><strong>INGENIERO EN SISTEMAS</strong><br></p>
                          <p class="description">Ingeniero ..... . Actualmente trabajando para el área de Emprendum en la
