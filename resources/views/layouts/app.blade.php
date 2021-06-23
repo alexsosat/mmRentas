@@ -9,6 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'mmRentas') }}</title>
+    <link rel="icon" href="{!! secure_asset('img/logo_nav.png') !!}" />
 
     <!-- Scripts -->
     <script src="{{ secure_asset('js/app.js') }}" defer></script>
