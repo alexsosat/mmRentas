@@ -23,7 +23,7 @@ class ImageFactory extends Factory
     {
         return [
             'publication_id' => rand(1, 20),
-            'image_url' => $this->faker->imageUrl(1280, 720)
+            'image_url' => 'https://source.unsplash.com/1600x900/?apartment'.rand(1, 20),
         ];
     }
 }

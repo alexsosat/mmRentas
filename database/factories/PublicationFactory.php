@@ -25,7 +25,7 @@ class PublicationFactory extends Factory
             'user_id' => rand(1, 5),
             'title' => $this->faker->sentence(),
             'description' => $this->faker->text(255),
-            'rooms' => rand(0, 8),
+            'rooms' => rand(0, 4),
             'bathrooms' => rand(0, 4),
             'address' => $this->faker->address,
             'price' => $this->faker->numberBetween($min = 1500, $max = 4000),
