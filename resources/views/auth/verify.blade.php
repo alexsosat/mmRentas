@@ -15,7 +15,7 @@
                         @endif
 
                         {{ __('Antes de continuar por favor confirma tu cuenta de correo en tu aplicación de correo') }}
-                        {{ __('Si no recibiste ningún correo') }},
+                        {{ __('Recuerda revisar también tu carpeta de SPAM. Si no recibiste ningún correo') }},
                         <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
                             @csrf
                             <button type="submit"

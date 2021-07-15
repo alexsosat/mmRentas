@@ -97,10 +97,10 @@
 
                             @else
                                 <span class="navbar-text actions">
-                                    <a class="login" href="{{ route('login') }}">Log In</a>
+                                    <a class="login" href="{{ route('login') }}">Iniciar Sesión</a>
                                     @if (Route::has('register'))
                                         <a class="btn btn-primary rounded text-white" role="button" id="sign-up"
-                                            href="{{ route('register') }}">Sign up</a>
+                                            href="{{ route('register') }}">Registrarse</a>
                                     @endif
                                 </span>
                             @endauth
