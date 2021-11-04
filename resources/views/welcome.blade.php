@@ -9,8 +9,7 @@
                     <h1 id="heading" style="font-size: 56px;">MM. Rentas</h1>
                     <p style="font-size: 24px;">Proveyendote un departamento para ti y tus conocidos<br></p>
                     <div id="main-search-bar" class="rounded px-3 pt-3 pb-2 w-100">
-                        <form class="d-flex flex-column flex-sm-row justify-content-between align-items-center"
-                            method="GET">
+                        <form class="d-flex flex-column flex-sm-row justify-content-between align-items-center" method="GET">
                             <input class="form-control w-100" type="text" placeholder="Ingrese palabras clave"
                                 name="key-words">
                             <div class="mr-3 d-none d-sm-block"></div>
@@ -22,7 +21,7 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <img src="{{ secure_asset('img/header picture.jpg') }}" alt="image header">
+                    <img class="img-fluid" src="{{ secure_asset('img/header picture.jpg') }}" alt="image header">
 
                 </div>
             </div>

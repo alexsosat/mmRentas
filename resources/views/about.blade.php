@@ -11,7 +11,7 @@
                  </div>
              </div>
              <div class="col col-12 col-lg-7">
-                 <img src="{{ secure_asset('img/team.png') }}" alt="Team">
+                 <img class="img-fluid" src="{{ secure_asset('img/team.png') }}" alt="Team">
              </div>
 
          </div>
@@ -50,11 +50,11 @@
                          <p class="title"><strong>INGENIERO EN SISTEMAS</strong><br></p>
                          <p class="description">Ingeniero ..... . Actualmente trabajando para el área de Emprendum en la
                              Universidad de Montemorelos.</p>
-                         <div class="social"><a href="https://www.facebook.com/miguel.vareladelgado.3" target="_blank"><i
-                                     class="fab fa-facebook-f"></i></a><a href="https://twitter.com/MiguelVarelaDe1"
-                                 target="_blank"><i class="fab fa-twitter"></i></a><a
-                                 href="https://www.instagram.com/m.vareladelgado/" target="_blank"><i
-                                     class="fab fa-instagram"></i></a></div>
+                         <div class="social"><a href="https://www.facebook.com/miguel.vareladelgado.3"
+                                 target="_blank"><i class="fab fa-facebook-f"></i></a><a
+                                 href="https://twitter.com/MiguelVarelaDe1" target="_blank"><i
+                                     class="fab fa-twitter"></i></a><a href="https://www.instagram.com/m.vareladelgado/"
+                                 target="_blank"><i class="fab fa-instagram"></i></a></div>
                      </div>
                  </div>
                  <div class="col-md-6 col-lg-4 item">
@@ -64,9 +64,10 @@
                          <p class="title"><strong>INGENIERO EN SISTEMAS</strong><br></p>
                          <p class="description">Ingeniero ..... . Actualmente trabajando para el área de Emprendum en la
                              Universidad de Montemorelos.</p>
-                         <div class="social"><a href="https://www.facebook.com/fredy.santos.79069323" target="_blank"><i
-                                     class="fab fa-facebook-f"></i></a><a href="https://www.instagram.com/_.freddysantos._/"
-                                 target="_blank"><i class="fab fa-instagram"></i></a></div>
+                         <div class="social"><a href="https://www.facebook.com/fredy.santos.79069323"
+                                 target="_blank"><i class="fab fa-facebook-f"></i></a><a
+                                 href="https://www.instagram.com/_.freddysantos._/" target="_blank"><i
+                                     class="fab fa-instagram"></i></a></div>
                      </div>
                  </div>
              </div>
