@@ -16,6 +16,6 @@ class DatabaseSeeder extends Seeder
     {
         User::factory(5)->create();
         Publication::factory(20)->create();
-        Image::factory(30)->create();
+        //Image::factory(30)->create();
     }
 }
