@@ -39,7 +39,7 @@
                     <div class="col-12 d-flex mb-3">
                         <span class="w-100 text-center text-grey">Ajustes avanzados</span>
                     </div>
-                    <div class="col-3">
+                    <div class="col-12 col-md-6 col-lg-3 mb-2">
                         <div class="dropdown">
                             <button class="btn btn-primary dropdown-toggle btn-block text-left dropdown-button-filter"
                                 aria-expanded="false" data-toggle="dropdown" id="dropdown-room-val" type="button">
@@ -47,7 +47,7 @@
                                     {{ old('rooms') }}
 
                                 @else
-                                    Cantidad de habitaciones
+                                    Cantidad de cuartos
                                 @endif
                             </button>
                             <div class="dropdown-menu" id="dropdown-room">
@@ -58,7 +58,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-3">
+                    <div class="col-12 col-md-6 col-lg-3 mb-2">
                         <div class="dropdown">
                             <button class="btn btn-primary dropdown-toggle btn-block text-left dropdown-button-filter"
                                 aria-expanded="false" data-toggle="dropdown" id="dropdown-bathroom-val" type="button">
@@ -77,11 +77,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-3">
+                    <div class="col-12 col-md-6 col-lg-3 mb-2">
                         <input class="form-control rounded w-100 form-control filter-input" type="text"
                             placeholder="Precio mímimo" name="min_price" value="{{ old('min_price') }}">
                     </div>
-                    <div class="col-3">
+                    <div class="col-12 col-md-6 col-lg-3 mb-2">
                         <input class="form-control rounded w-100 form-control filter-input" type="text"
                             placeholder="Precio máximo" name="max_price" value="{{ old('max_price') }}">
                     </div>
@@ -101,7 +101,8 @@
         @endif
 
         <div class="col-md-4 mb-3">
-            <div class="recent-item"><a class="search-item" href="{{ route('publication.details', $Publication->id) }}">
+            <div class="recent-item"><a class="search-item"
+                    href="{{ route('publication.details', $Publication->id) }}">
                     <div class="recent-item-img"
                         style="background: url(/publication/{{ $Publication->id }}/thumbnail) center / cover no-repeat;">
                     </div>
